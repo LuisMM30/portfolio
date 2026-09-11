@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <rect width="1200" height="750" fill="#0B0D10"/>
+  <rect x="60" y="60" width="1080" height="630" rx="12" fill="#101318" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="120" y="140" width="200" height="550" rx="8" fill="#161A21"/>
+  <rect x="340" y="140" width="760" height="550" rx="8" fill="rgba(255,255,255,0.02)" stroke="rgba(255,255,255,0.06)"/>
+  <text x="600" y="420" text-anchor="middle" fill="#F5F7FA" font-family="system-ui,sans-serif" font-size="20">Panel principal  Captura 1</text>
+  <text x="600" y="680" text-anchor="middle" fill="#6B7280" font-family="monospace" font-size="14">screen-1.svg</text>
+</svg>

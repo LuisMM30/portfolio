@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <rect width="1200" height="750" fill="#0B0D10"/>
+  <rect x="60" y="60" width="1080" height="630" rx="12" fill="#101318" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <rect x="60" y="60" width="1080" height="48" rx="12" fill="#161A21"/>
+  <circle cx="88" cy="84" r="6" fill="#38BDF8" opacity="0.6"/>
+  <circle cx="108" cy="84" r="6" fill="rgba(255,255,255,0.15)"/>
+  <circle cx="128" cy="84" r="6" fill="rgba(255,255,255,0.15)"/>
+  <rect x="480" y="72" width="240" height="24" rx="6" fill="rgba(255,255,255,0.04)"/>
+  <rect x="120" y="160" width="960" height="80" rx="8" fill="rgba(56,189,248,0.08)"/>
+  <rect x="120" y="280" width="300" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="450" y="280" width="300" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <rect x="780" y="280" width="300" height="320" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
+  <text x="600" y="200" text-anchor="middle" fill="#F5F7FA" font-family="system-ui,sans-serif" font-size="28" font-weight="600">Ferretería Delicias</text>
+  <text x="600" y="680" text-anchor="middle" fill="#6B7280" font-family="monospace" font-size="14">Reemplazar con screenshot  /images/projects/ferreteria-delicias/</text>
+</svg>

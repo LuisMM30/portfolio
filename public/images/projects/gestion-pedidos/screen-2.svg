@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
+  <rect width="1200" height="750" fill="#0B0D10"/>
+  <rect x="60" y="60" width="1080" height="630" rx="12" fill="#101318" stroke="rgba(255,255,255,0.08)"/>
+  <rect x="120" y="180" width="960" height="48" rx="6" fill="rgba(255,255,255,0.04)"/>
+  <rect x="120" y="250" width="960" height="36" rx="4" fill="rgba(56,189,248,0.1)"/>
+  <rect x="120" y="300" width="960" height="36" rx="4" fill="rgba(255,255,255,0.03)"/>
+  <rect x="120" y="350" width="960" height="36" rx="4" fill="rgba(255,255,255,0.03)"/>
+  <rect x="120" y="400" width="960" height="36" rx="4" fill="rgba(255,255,255,0.03)"/>
+  <text x="600" y="520" text-anchor="middle" fill="#F5F7FA" font-family="system-ui,sans-serif" font-size="20">Listado de pedidos  Captura 2</text>
+  <text x="600" y="680" text-anchor="middle" fill="#6B7280" font-family="monospace" font-size="14">screen-2.svg</text>
+</svg>
