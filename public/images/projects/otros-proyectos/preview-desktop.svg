@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" fill="none">
-  <rect width="1200" height="750" fill="#0B0D10"/>
-  <rect x="60" y="60" width="1080" height="630" rx="12" fill="#101318" stroke="rgba(255,255,255,0.08)"/>
-  <rect x="120" y="140" width="480" height="400" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
-  <rect x="640" y="140" width="480" height="400" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.06)"/>
-  <text x="600" y="600" text-anchor="middle" fill="#F5F7FA" font-family="system-ui,sans-serif" font-size="24" font-weight="600">Webs para comercios reales</text>
-  <text x="600" y="680" text-anchor="middle" fill="#6B7280" font-family="monospace" font-size="14">Reemplazar con screenshot  /images/projects/otros-proyectos/</text>
-</svg>

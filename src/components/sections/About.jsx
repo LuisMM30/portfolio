@@ -7,7 +7,7 @@ export default function About() {
     <section className="py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHeading
-          index="08"
+          index="06"
           title="Construyo productos web para necesidades reales."
           subtitle="Una forma de trabajar orientada a aportar valor desde el primer día."
           id="sobre-mi"
@@ -16,7 +16,7 @@ export default function About() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Sticky label column */}
           <div className="lg:col-span-4">
-            <div className="lg:sticky lg:top-32">
+            <div className="lg:sticky lg:top-56">
               <p className="u-label text-text-muted">Sobre mí</p>
               <p className="display mt-6 text-2xl text-text-primary md:text-3xl">
                 {site.name}
@@ -41,25 +41,35 @@ export default function About() {
           <div className="lg:col-span-8">
             <div className="max-w-2xl space-y-6 text-lg text-text-secondary leading-relaxed">
               <p>
-                Si buscas a alguien que convierta una idea en un producto web sólido, puedo aportar
-                mucho más que código: visión de producto, criterio técnico y compromiso con el
-                resultado.
+                Soy desarrollador Full Stack Junior y me gusta aprender construyendo. Durante estos
+                últimos años he trabajado en proyectos reales relacionados con páginas web, comercio
+                electrónico y aplicaciones desarrolladas desde cero.
               </p>
               <p>
-                Tengo experiencia trabajando en comercio electrónico, webs para negocios y
-                plataformas desarrolladas desde cero con React y MongoDB. Esto me permite entender
-                tanto las necesidades del negocio como los detalles que hacen que una solución sea
-                rápida, clara y fácil de mantener.
+                He trabajado con tecnologías como HTML, CSS, JavaScript, React, PHP, MongoDB y
+                MySQL, además de herramientas y plataformas como WordPress, PrestaShop y
+                WooCommerce.
               </p>
               <p>
-                Aprendo de forma constante y utilizo la inteligencia artificial con criterio para
-                investigar, acelerar tareas y encontrar mejores soluciones, sin delegar las
-                decisiones importantes ni la revisión final.
+                Mi experiencia me ha permitido conocer distintas partes del desarrollo: desde crear
+                interfaces y funcionalidades hasta trabajar con datos, bases de datos y comunicación
+                entre diferentes partes de una aplicación.
               </p>
               <p>
-                Colaborar conmigo significa contar con un desarrollador implicado, resolutivo y orientado
-                a aportar valor desde el primer día: alguien que escucha, propone, construye y cuida
-                el resultado hasta el último detalle.
+                No pretendo saberlo todo. Me gusta enfrentarme a problemas que todavía no sé
+                resolver, investigar, probar diferentes opciones y aprender durante el proceso. La
+                inteligencia artificial forma parte de mi forma de trabajar, utilizándola como apoyo
+                para aprender, investigar y desarrollar de forma más eficiente, siempre revisando y
+                entendiendo lo que hago.
+              </p>
+              <p>
+                Busco seguir creciendo como desarrollador, especialmente en Full Stack, React,
+                backend, APIs, bases de datos y desarrollo de aplicaciones, mientras participo en
+                proyectos reales y asumo cada vez más responsabilidades.
+              </p>
+              <p>
+                Creo que puedo aportar sobre todo curiosidad, capacidad de aprendizaje, implicación
+                y ganas de hacer las cosas bien.
               </p>
             </div>
 
@@ -81,7 +91,7 @@ export default function About() {
                   ))}
                 </ol>
                 <div className="mt-5 border-t border-border pt-4 text-accent">
-                  $ ready_to_collaborate
+                  $ ready_to_build
                 </div>
               </div>
             </div>

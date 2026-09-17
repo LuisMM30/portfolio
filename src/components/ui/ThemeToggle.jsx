@@ -11,7 +11,7 @@ export default function ThemeToggle({ className }) {
       type="button"
       onClick={toggleTheme}
       className={cn(
-        'relative inline-flex items-center justify-center w-10 h-10 border border-border text-text-secondary hover:text-text-primary hover:border-border-strong transition-all duration-200 cursor-pointer',
+        'relative inline-flex items-center justify-center h-[46px] w-[46px] border border-border text-text-secondary hover:text-text-primary hover:border-border-strong transition-all duration-200 cursor-pointer',
         className,
       )}
       aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}

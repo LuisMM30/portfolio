@@ -1,16 +1,74 @@
 import { useEffect, useRef, useState } from 'react'
-import { ArrowUpRight } from 'lucide-react'
+import { Link, useLocation } from 'react-router-dom'
+import { ArrowUpRight, FolderOpen, User, X } from 'lucide-react'
 import { site } from '../../data/site'
 import { sectionIndex } from '../../data/navigation'
 import ThemeToggle from '../ui/ThemeToggle'
+import { scrollToSection } from '../../utils/scrollToSection'
 import { cn } from '../../utils/cn'
+
+// Tarjeta del índice: fila compacta en móvil (número · etiqueta · flecha) y
+// tarjeta apilada (número+flecha arriba, etiqueta abajo) desde sm.
+function IndexCard({ href, onClick, index, label, featured = false }) {
+  const className = cn(
+    'group flex flex-row items-center gap-3 border px-4 py-3.5 text-left transition-all duration-300 hover:-translate-y-1 sm:min-h-24 sm:grid sm:grid-cols-[auto_1fr_auto] sm:p-4 md:min-h-28 md:p-5',
+    featured
+      ? 'border-accent/50 bg-accent/10 hover:border-accent hover:bg-accent/20'
+      : 'border-border bg-bg-secondary/30 hover:border-accent hover:bg-bg-secondary',
+  )
+  const children = (
+    <>
+      <span className="shrink-0 font-mono text-sm text-accent">{index}</span>
+      <span
+        className={cn(
+          'display min-w-0 flex-1 text-lg transition-colors duration-300 group-hover:text-accent sm:col-span-3 sm:col-start-1 sm:row-start-2 sm:text-xl md:text-2xl lg:text-3xl',
+          featured ? 'text-accent' : 'text-text-primary',
+        )}
+      >
+        {label}
+      </span>
+      <ArrowUpRight
+        size={20}
+        className={cn(
+          'shrink-0 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 sm:col-start-3 sm:row-start-1',
+          featured ? 'text-accent' : 'text-text-muted group-hover:text-accent',
+        )}
+        aria-hidden="true"
+      />
+    </>
+  )
+  // Enlaces internos (#seccion) como <a>; rutas de páginas con Link (SPA)
+  return href.startsWith('#') ? (
+    <a href={href} onClick={onClick} className={className}>{children}</a>
+  ) : (
+    <Link to={href} onClick={onClick} className={className}>{children}</Link>
+  )
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [progress, setProgress] = useState(0)
-  const [open, setOpen] = useState(false)
+  const location = useLocation()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuLocation, setMenuLocation] = useState(location)
+
+  // El overlay se considera cerrado si la ruta cambió desde que se abrió
+  // (botón atrás del navegador, enlace de marca, tarjeta del índice…)
+  const open = menuOpen && menuLocation === location
+  const toggleOpen = () => {
+    setMenuOpen(!open)
+    setMenuLocation(location)
+  }
+  const close = () => setMenuOpen(false)
   const toggleRef = useRef(null)
   const panelRef = useRef(null)
+
+  const isProjectsPage = location.pathname === '/proyectos'
+
+  // En /proyectos el botón central mantiene su nombre pero lleva a la sección Experiencia
+  const centralButton = isProjectsPage
+    ? { label: '¿Quién soy?', href: '/#experiencia' }
+    : { label: 'Proyectos', href: '/proyectos' }
 
   useEffect(() => {
     let raf = 0
@@ -42,7 +100,7 @@ export default function Navbar() {
 
     const onKeyDown = (e) => {
       if (e.key === 'Escape') {
-        setOpen(false)
+        close()
         toggleRef.current?.focus()
         return
       }
@@ -67,13 +125,11 @@ export default function Navbar() {
     }
   }, [open])
 
-  const close = () => setOpen(false)
-
   return (
     <>
       <header
         className={cn(
-          'fixed inset-x-0 top-0 z-50 border-b transition-colors duration-300',
+          'fixed inset-x-0 top-0 z-[90] border-b transition-colors duration-300',
           scrolled || open ? 'border-border bg-bg-primary/95 backdrop-blur-md' : 'border-transparent bg-transparent',
         )}
       >
@@ -81,30 +137,61 @@ export default function Navbar() {
           aria-label="Navegación principal"
           className="mx-auto flex h-16 items-center justify-between gap-4 px-5 sm:px-6 md:h-20 lg:px-8"
         >
-          <a
-            href="#inicio"
+          <Link
+            to="/"
             className="group inline-flex shrink-0 items-center gap-2.5 text-sm font-semibold tracking-tight text-text-primary transition-colors hover:text-accent md:text-base"
-            onClick={(e) => {
-              e.preventDefault()
-              close()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-            }}
           >
             <span className="inline-block h-2.5 w-2.5 bg-accent" aria-hidden="true" />
             {site.name}
-          </a>
+          </Link>
+
+          {/* Botón central contextual: Proyectos <-> Sobre mí.
+              En móvil se muestra versión compacta (icono), en md+ el botón con texto. */}
+          {centralButton.href.startsWith('/#') ? (
+            <>
+              <Link
+                to={centralButton.href}
+                aria-label={centralButton.label}
+                className="u-label inline-flex h-[46px] min-w-[46px] items-center justify-center border border-border px-3 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:hidden"
+              >
+                <User size={17} aria-hidden="true" />
+              </Link>
+              <Link
+                to={centralButton.href}
+                className="u-label hidden h-[46px] items-center border border-border px-4 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:inline-flex"
+              >
+                {centralButton.label}
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link
+                to={centralButton.href}
+                aria-label={centralButton.label}
+                className="u-label inline-flex h-[46px] min-w-[46px] items-center justify-center border border-border px-3 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:hidden"
+              >
+                <FolderOpen size={17} aria-hidden="true" />
+              </Link>
+              <Link
+                to={centralButton.href}
+                className="u-label hidden h-[46px] items-center border border-border px-4 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:inline-flex"
+              >
+                {centralButton.label}
+              </Link>
+            </>
+          )}
 
           <div className="flex items-center gap-2.5">
             <ThemeToggle />
             <button
               ref={toggleRef}
               type="button"
-              onClick={() => setOpen((v) => !v)}
+              onClick={toggleOpen}
               aria-expanded={open}
               aria-controls="index-overlay"
               aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
               data-cursor="view"
-              className="u-label inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-border px-3 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary"
+              className="u-label inline-flex h-[46px] min-h-0 min-w-[46px] items-center justify-center border border-border px-3 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary"
             >
               <span
                 className="inline-flex flex-col gap-[4px]"
@@ -137,44 +224,61 @@ export default function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-label="Índice del portfolio"
-        hidden={!open}
       >
-        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pt-24 sm:px-6 md:pt-28 lg:px-8">
-          <div className="mb-8 flex items-end justify-between border-b border-border pb-4">
+        <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pt-20 sm:px-6 sm:pt-24 md:pt-28 lg:px-8">
+          <div className="mb-5 flex items-end justify-between gap-3 border-b border-border pb-4 sm:mb-8">
             <div>
               <p className="u-label text-accent">Navegación</p>
               <p className="display mt-2 text-4xl text-text-primary md:text-5xl">Índice</p>
             </div>
-            <p className="u-label text-text-muted">ESC para cerrar</p>
+            {/* En móvil no hay teclado: botón Cerrar visible. En escritorio, atajo ESC. */}
+            <button
+              type="button"
+              onClick={close}
+              className="u-label inline-flex h-[46px] shrink-0 items-center gap-2 border border-border px-4 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:hidden"
+            >
+              Cerrar
+              <X size={16} aria-hidden="true" />
+            </button>
+            <p className="u-label hidden text-text-muted md:block">ESC para cerrar</p>
           </div>
 
-          <ol className="grid flex-1 auto-rows-min grid-cols-1 content-start gap-3 overflow-y-auto sm:grid-cols-2 lg:grid-cols-3">
+          <ol className="grid min-h-0 flex-1 auto-rows-min grid-cols-1 content-start gap-2.5 overflow-y-auto overscroll-contain sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
+            {/* Secciones de la página actual */}
             {sectionIndex.map((section, i) => (
               <li key={section.id}>
-                <a
-                  href={`#${section.id}`}
-                  onClick={close}
-                  className="group flex min-h-24 flex-col justify-between border border-border bg-bg-secondary/30 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-accent hover:bg-bg-secondary md:min-h-28 md:p-5"
-                >
-                  <span className="flex items-start justify-between gap-4">
-                    <span className="font-mono text-sm text-accent">
-                      {String(i + 1).padStart(2, '0')}
-                    </span>
-                    <ArrowUpRight
-                      size={20}
-                      className="text-text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-accent"
-                      aria-hidden="true"
-                    />
-                  </span>
-                  <span className="display text-xl text-text-primary transition-colors duration-300 group-hover:text-accent sm:text-2xl md:text-3xl">
-                    {section.label}
-                  </span>
-                </a>
+                {isProjectsPage ? (
+                  <IndexCard
+                    href={`/#${section.id}`}
+                    onClick={close}
+                    index={String(i + 1).padStart(2, '0')}
+                    label={section.label}
+                  />
+                ) : (
+                  <IndexCard
+                    href={`#${section.id}`}
+                    index={String(i + 1).padStart(2, '0')}
+                    label={section.label}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      close()
+                      // Espera a que se libere el bloqueo de scroll del overlay antes de medir
+                      scrollToSection(section.id, { delay: 30 })
+                    }}
+                  />
+                )}
               </li>
             ))}
+
+            {/* Botón de la otra página (solo en home; en /proyectos ya está Inicio como item 01) */}
+            {!isProjectsPage && (
+              <li>
+                <IndexCard href="/proyectos" onClick={close} index="→" label="Proyectos" featured />
+              </li>
+            )}
           </ol>
 
-          <div className="flex flex-col gap-3 border-t border-border py-6 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex flex-col gap-3 border-t border-border py-4 sm:flex-row sm:items-center sm:justify-between sm:py-6">
             <p className="u-label text-text-muted">
               {site.email} — {site.location}
             </p>

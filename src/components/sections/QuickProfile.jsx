@@ -1,5 +1,5 @@
+import { Link } from 'react-router-dom'
 import { site } from '../../data/site'
-import Button from '../ui/Button'
 import DownloadCVButton from '../ui/DownloadCVButton'
 
 export default function QuickProfile() {
@@ -37,9 +37,12 @@ export default function QuickProfile() {
           {/* Actions */}
           <div className="lg:col-span-3 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
             <DownloadCVButton variant="primary" size="md" className="w-full sm:w-auto" />
-            <Button href="#proyectos" variant="secondary" size="md" className="w-full sm:w-auto">
+            <Link
+              to="/proyectos"
+              className="inline-flex min-h-[44px] w-full items-center justify-center border border-border-strong px-5 py-2.5 text-sm font-medium text-text-primary transition-all duration-300 hover:border-text-primary hover:bg-bg-secondary sm:w-auto"
+            >
               Ver proyectos
-            </Button>
+            </Link>
           </div>
         </div>
       </div>

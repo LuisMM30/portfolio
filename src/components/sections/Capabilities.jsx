@@ -6,7 +6,7 @@ export default function Capabilities() {
   return (
     <section className="py-24 md:py-36">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <SectionHeading index="04" title="Qué puedo construir" id="servicios" />
+        <SectionHeading index="03" title="Qué puedo construir" id="servicios" />
 
         <ol className="border-b border-border">
           {capabilities.map((cap, i) => (

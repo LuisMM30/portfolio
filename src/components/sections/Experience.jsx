@@ -72,14 +72,16 @@ export default function Experience() {
     <section className="py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHeading
-          index="03"
+          index="02"
           title="Experiencia"
           subtitle="Colaboraciones, prácticas y proyectos desarrollados para empresas y clientes reales."
           id="experiencia"
         />
 
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
-          <div className="lg:col-span-4">
+          {/* Year nav (big year + jump links): desktop-only, it relies on the
+              scroll-synced hover/click behavior and clutters small screens. */}
+          <div className="hidden lg:col-span-4 lg:block">
             <div
               className="lg:sticky lg:top-48"
               onMouseLeave={() => setHoveredIndex(null)}

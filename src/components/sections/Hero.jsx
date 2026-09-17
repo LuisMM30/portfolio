@@ -1,13 +1,12 @@
 import { useEffect, useRef } from 'react'
+import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { site } from '../../data/site'
-import Button from '../ui/Button'
-import DownloadCVButton from '../ui/DownloadCVButton'
 import HeroInfoVariants from '../ui/HeroInfoVariants'
 import { useEnvironment } from '../../hooks/useEnvironment'
 
 const specRows = [
-  { label: 'Rol', value: 'Desarrollador Web Full Stack Junior' },
+  { label: 'Rol', value: 'Desarrollador Web Full Stack\nJunior' },
   { label: 'Base', value: site.location },
   { label: 'Formación', value: 'Téc. Sup. Desarrollo de Aplicaciones Web' },
   { label: 'Estado', value: 'Disponible para nuevas oportunidades', live: true }
@@ -108,14 +107,14 @@ export default function Hero() {
               {site.headline} {site.subheadline}
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-              <Button href="#proyectos" variant="primary" size="lg" data-cursor="view">
-                Ver proyectos
+              <Link
+                to="/#experiencia"
+                className="inline-flex min-h-[44px] items-center justify-center gap-2 whitespace-nowrap bg-accent px-7 py-3.5 text-base font-medium text-accent-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-hover"
+                data-cursor="view"
+              >
+                Sobre mí
                 <ArrowRight size={18} aria-hidden="true" />
-              </Button>
-              <Button href="#contacto" variant="secondary" size="lg" data-cursor="talk">
-                Contactar
-              </Button>
-              <DownloadCVButton variant="ghost" size="lg" label="Descargar CV" />
+              </Link>
             </div>
           </div>
         </div>

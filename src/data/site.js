@@ -1,14 +1,14 @@
 export const site = {
   name: 'Luis Montes de Oca',
   role: 'Desarrollador Web Full Stack Junior',
-  location: 'Madrid, 28041',
+  location: 'Madrid',
   status: 'Disponible para nuevas oportunidades',
   email: 'luismonteswebs@gmail.com',
   linkedin: 'https://www.linkedin.com/in/luis-montes-de-oca-81383732a',
   education: 'Grado Superior en Desarrollo de Aplicaciones Web · Modalidad Dual',
-  headline: 'Desarrollador web junior especializado en frontend moderno e IA aplicada.',
-  subheadline:
-    'Creo webs y aplicaciones para clientes reales combinando planificación, diseño responsive, desarrollo y herramientas de inteligencia artificial.',
+  headline:
+    'Desarrollador Web Junior con experiencia en proyectos reales de e-commerce, desarrollo web y aplicaciones. Trabajo con frontend, backend, bases de datos y distintas tecnologías para construir soluciones que respondan a necesidades concretas.',
+  subheadline: '',
   mainTech: ['React', 'JavaScript', 'TypeScript', 'WordPress', 'MongoDB'],
   highlights: ['Proyectos reales', 'Frontend moderno', 'IA y automatización'],
 }

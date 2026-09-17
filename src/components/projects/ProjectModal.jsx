@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react'
-import { X, ExternalLink } from 'lucide-react'
+import { X, ExternalLink, Monitor } from 'lucide-react'
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
 import { cn } from '../../utils/cn'
@@ -41,7 +41,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
     <div
       ref={panelRef}
       className={cn(
-        'fixed inset-0 z-[70] transition-[opacity,visibility] duration-250',
+        'fixed inset-0 z-[100] transition-[opacity,visibility] duration-250',
         open ? 'visible opacity-100' : 'invisible opacity-0',
       )}
       role="dialog"
@@ -78,6 +78,12 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                     >
                       {details.status}
                     </Badge>
+                    {project.desktopOnly && (
+                      <p className="mt-1.5 flex items-center gap-1.5 text-xs text-text-muted">
+                        <Monitor size={13} aria-hidden="true" className="shrink-0" />
+                        Solo ordenadores · no responsive
+                      </p>
+                    )}
                     <h2
                       id="modal-title"
                       className="truncate text-lg font-semibold tracking-tight text-text-primary md:text-2xl"
@@ -99,11 +105,29 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
               <div className="px-5 py-2 md:px-8">
                 <Section label="Contexto">
-                  <p className="leading-relaxed text-text-secondary">{details.context}</p>
+                  {(Array.isArray(details.context) ? details.context : [details.context]).map(
+                    (paragraph) => (
+                      <p
+                        key={paragraph.slice(0, 32)}
+                        className="mb-3 leading-relaxed text-text-secondary last:mb-0"
+                      >
+                        {paragraph}
+                      </p>
+                    ),
+                  )}
                 </Section>
 
                 <Section label="El proyecto">
-                  <p className="leading-relaxed text-text-secondary">{details.project}</p>
+                  {(Array.isArray(details.project) ? details.project : [details.project]).map(
+                    (paragraph) => (
+                      <p
+                        key={paragraph.slice(0, 32)}
+                        className="mb-3 leading-relaxed text-text-secondary last:mb-0"
+                      >
+                        {paragraph}
+                      </p>
+                    ),
+                  )}
                 </Section>
 
                 {details.subProjects && (
@@ -167,25 +191,9 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                   </p>
                 </Section>
 
-                {details.gallery && (
-                  <Section label="Galería">
-                    <div className="grid gap-6">
-                      {details.gallery.map((img, i) => (
-                        <div key={img}>
-                          <div className="border border-border bg-bg-secondary">
-                            <img
-                              src={img}
-                              alt={`${project.title} — captura ${i + 1}`}
-                              loading="lazy"
-                              className="h-auto w-full"
-                            />
-                          </div>
-                          <p className="u-label mt-2 text-text-muted">
-                            FIG. {i + 1} — {project.title}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                {details.goal && (
+                  <Section label="Objetivo principal">
+                    <p className="leading-relaxed text-text-secondary">{details.goal}</p>
                   </Section>
                 )}
 

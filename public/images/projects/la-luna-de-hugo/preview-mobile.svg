@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 390 844" fill="none">
-  <rect width="390" height="844" fill="#0B0D10"/>
-  <rect x="20" y="40" width="350" height="764" rx="16" fill="#101318" stroke="rgba(255,255,255,0.08)"/>
-  <rect x="40" y="100" width="310" height="250" rx="8" fill="rgba(56,189,248,0.06)"/>
-  <rect x="40" y="370" width="310" height="60" rx="6" fill="rgba(255,255,255,0.04)"/>
-  <rect x="40" y="450" width="310" height="60" rx="6" fill="rgba(255,255,255,0.04)"/>
-  <text x="195" y="580" text-anchor="middle" fill="#9CA3AF" font-family="system-ui,sans-serif" font-size="12">Vista móvil</text>
-</svg>

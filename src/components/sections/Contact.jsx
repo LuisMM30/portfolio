@@ -15,6 +15,7 @@ export default function Contact() {
     reason: '',
   })
   const [status, setStatus] = useState('idle') // idle | success | error
+  const [errors, setErrors] = useState({})
 
   const hasEndpoint = Boolean(import.meta.env.VITE_CONTACT_ENDPOINT)
 
@@ -27,14 +28,34 @@ export default function Contact() {
     e.preventDefault()
     setStatus('idle')
 
+    // Validación en cliente: el form usa noValidate, así que esta es la única barrera.
+    const nextErrors = {}
+    if (formState.name.trim().length < 2) nextErrors.name = 'Indica tu nombre.'
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email.trim())) {
+      nextErrors.email = 'Introduce un email válido.'
+    }
+    if (formState.reason.trim().length < 10) {
+      nextErrors.reason = 'Cuéntame un poco más (mínimo 10 caracteres).'
+    }
+    setErrors(nextErrors)
+    if (Object.keys(nextErrors).length > 0) return
+
+    const payload = {
+      name: formState.name.trim(),
+      email: formState.email.trim(),
+      reason: formState.reason.trim(),
+    }
+
     const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT
 
     if (!endpoint) {
-      const subject = encodeURIComponent(`Contacto portfolio — ${formState.reason}`)
+      const subject = encodeURIComponent(`Contacto portfolio — ${payload.reason}`)
       const body = encodeURIComponent(
-        `Nombre: ${formState.name}\nEmail: ${formState.email}\nMotivo: ${formState.reason}`,
+        `Nombre: ${payload.name}\nEmail: ${payload.email}\nMotivo: ${payload.reason}`,
       )
-      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`
+      const mailtoUrl = `mailto:${site.email}?subject=${subject}&body=${body}`
+      setFormState({ name: '', email: '', reason: '' })
+      window.location.href = mailtoUrl
       setStatus('success')
       return
     }
@@ -42,11 +63,18 @@ export default function Contact() {
     try {
       const response = await fetch(endpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formState),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify({
+          ...payload,
+          _subject: `Contacto portfolio — ${payload.name}`,
+          _captcha: 'false',
+        }),
       })
 
       if (!response.ok) throw new Error('Error al enviar')
+
+      const result = await response.json().catch(() => null)
+      if (result && result.success === 'false') throw new Error('Envío rechazado')
 
       setStatus('success')
       setFormState({ name: '', email: '', reason: '' })
@@ -74,16 +102,16 @@ export default function Contact() {
     <section className="relative pb-24 pt-24 md:pb-32 md:pt-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHeading
-          index="09"
+          index="07"
           title="Construyamos algo"
           id="contacto"
         />
 
-        <div className="mt-0 grid gap-x-14 gap-y-14 lg:grid-cols-12 lg:items-stretch">
+        <div className="mt-0 grid gap-x-14 gap-y-14 lg:grid-cols-[43fr_57fr] lg:items-stretch">
           {/* Direct channels */}
-          <div className="flex lg:col-span-5">
+          <div className="flex lg:col-span-1">
             <div className="terminal-box flex w-full flex-col border border-border bg-bg-secondary font-mono text-xs">
-              <div className="flex h-[62px] items-center justify-between border-b border-border px-5 py-0 text-text-muted">
+              <div className="flex h-[62px] items-center justify-between border-b border-border px-6 py-0 text-text-muted">
                 <span className="flex items-center gap-2"><span className="text-accent">›_</span> contact.channels</span>
                 <span className="text-accent">●</span>
               </div>
@@ -94,7 +122,7 @@ export default function Contact() {
                     href={row.href}
                     {...(row.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     data-cursor="talk"
-                    className="group flex items-center justify-between gap-4 px-5 py-[31px] transition-colors hover:bg-bg-elevated"
+                    className="group flex items-center justify-between gap-4 px-6 py-[31px] transition-colors hover:bg-bg-elevated"
                   >
                     <span className="u-label text-text-muted">{row.label}</span>
                     <span className="inline-flex items-center gap-2 break-all text-right font-medium text-text-primary">
@@ -109,7 +137,7 @@ export default function Contact() {
                 </li>
               ))}
               </ul>
-              <div className="border-t border-border px-5 py-[39px]">
+              <div className="mt-auto border-t border-border px-6 py-5">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="u-label mb-1 text-text-muted">Currículum</p>
@@ -117,7 +145,12 @@ export default function Contact() {
                       Experiencia y formación en detalle, en PDF.
                     </p>
                   </div>
-                  <DownloadCVButton variant="primary" size="md" label="Descargar CV" />
+                  <DownloadCVButton
+                    variant="primary"
+                    size="contact"
+                    label="Descargar CV"
+                    className="min-h-0 h-10 self-end font-sans"
+                  />
                 </div>
               </div>
 
@@ -125,14 +158,15 @@ export default function Contact() {
           </div>
 
           {/* Form */}
-          <div className="flex lg:col-span-7">
-            <div className="terminal-box flex w-full flex-col border border-border bg-bg-secondary/40 px-6 py-[19px] md:px-10 md:py-6">
-              <div className="mb-5 -mx-6 flex h-[62px] items-center gap-2 border-b border-border px-5 py-0 font-mono text-xs text-text-muted md:-mx-10"><span className="text-accent">›_</span> send.message</div>
-              <h3 className="display mb-3 text-2xl text-text-primary md:text-3xl">
-                Cuéntame tu proyecto
-              </h3>
+          <div className="flex lg:col-span-1">
+            <div className="terminal-box flex w-full flex-col border border-border bg-bg-secondary">
+              <div className="flex h-[62px] items-center justify-between border-b border-border px-6 py-0 font-mono text-xs text-text-muted">
+                <span className="flex items-center gap-2"><span className="text-accent">›_</span> send.message</span>
+                <span className="text-accent">●</span>
+              </div>
+              <div className="flex flex-1 flex-col px-6 pb-5 pt-[31px]">
 
-              <form onSubmit={handleSubmit} className="space-y-[17px]" noValidate>
+              <form onSubmit={handleSubmit} className="flex flex-1 flex-col gap-[17px]" noValidate>
                 <div className="grid gap-x-8 gap-y-[17px] sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="u-label mb-1 block text-text-muted">
@@ -146,9 +180,11 @@ export default function Contact() {
                       autoComplete="name"
                       value={formState.name}
                       onChange={handleChange}
+                      aria-invalid={Boolean(errors.name)}
                       className={fieldClasses}
                       placeholder="Tu nombre"
                     />
+                    {errors.name && <p className="mt-1 text-sm text-danger">{errors.name}</p>}
                   </div>
                   <div>
                     <label htmlFor="email" className="u-label mb-1 block text-text-muted">
@@ -162,30 +198,41 @@ export default function Contact() {
                       autoComplete="email"
                       value={formState.email}
                       onChange={handleChange}
+                      aria-invalid={Boolean(errors.email)}
                       className={fieldClasses}
                       placeholder="tu@email.com"
                     />
+                    {errors.email && <p className="mt-1 text-sm text-danger">{errors.email}</p>}
                   </div>
                 </div>
 
                 <div>
                   <label htmlFor="reason" className="u-label mb-1 block text-text-muted">
-                    ¿Qué necesitas?
-                  </label>
-                  <input
-                    type="text"
-                    id="reason"
-                    name="reason"
-                    required
-                    value={formState.reason}
-                    onChange={handleChange}
-                    className={fieldClasses}
-                    placeholder="Escribe qué necesitas"
-                  />
-                </div>
+                    Mensaje
+                  </label>                    <input
+                      type="text"
+                      id="reason"
+                      name="reason"
+                      required
+                      value={formState.reason}
+                      onChange={handleChange}
+                      aria-invalid={Boolean(errors.reason)}
+                      className={fieldClasses}
+                      placeholder="Mi idea es..."
+                    />
+                    {errors.reason && (
+                      <p className="mt-1 text-sm text-danger">{errors.reason}</p>
+                    )}
+                  </div>
 
-                <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center">
-                  <Button type="submit" variant="primary" size="lg" data-cursor="talk">
+                <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    size="contact"
+                    data-cursor="talk"
+                    className="min-h-0 h-10 font-sans"
+                  >
                     Enviar mensaje
                     <Send size={16} aria-hidden="true" />
                   </Button>
@@ -213,6 +260,7 @@ export default function Contact() {
                   </div>
                 </div>
               </form>
+              </div>
             </div>
           </div>
         </div>

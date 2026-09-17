@@ -11,6 +11,8 @@ const sizes = {
   sm: 'px-3.5 py-1.5 text-sm',
   md: 'px-5 py-2.5 text-sm',
   lg: 'px-7 py-3.5 text-base',
+  // Tamaño compacto compartido por los botones de Contacto (~30% más pequeño que lg)
+  contact: 'min-h-0 px-4 py-2 text-sm',
 }
 
 export default function Button({

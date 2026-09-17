@@ -1,5 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import 'tailwindcss';
+// Las fuentes (Manrope + DM Mono) se cargan vía <link> en index.html con preconnect:
+// un @import de CSS se descubre tarde y bloquea el render más de lo necesario.
 
 @theme {
   --font-sans: 'Manrope', ui-sans-serif, system-ui, -apple-system, sans-serif;
@@ -40,6 +41,7 @@
   --private: #d2a46f;
   --danger: #d97863;
   --stroke-text: rgba(241, 238, 229, .22);
+  --device-shadow: 0 22px 50px -20px rgba(0, 0, 0, .55);
 }
 
 html[data-theme='light'] {
@@ -59,6 +61,7 @@ html[data-theme='light'] {
   --private: #9b672f;
   --danger: #b95745;
   --stroke-text: rgba(23, 26, 22, .22);
+  --device-shadow: 0 4px 12px -6px rgba(23, 26, 22, .12);
 }
 
 @layer base {
@@ -67,7 +70,7 @@ html[data-theme='light'] {
   body {
     margin: 0;
     min-height: 100vh;
-    overflow-x: hidden;
+    overflow-x: clip;
     background: var(--bg-primary);
     color: var(--text-primary);
     font-family: var(--font-sans);
@@ -146,13 +149,10 @@ header.fixed nav { max-width: 80rem; }
 }
 
 /* Project surfaces: images are the hero, not the decoration around them. */
-#proyectos article .border { box-shadow: none !important; }
-#proyectos article figure > div { border-color: var(--border-strong); }
 #proyectos article figure img { filter: saturate(.82); }
 #proyectos article:hover figure img { filter: saturate(1); }
 #proyectos article h3 { transition: transform .5s cubic-bezier(.22,1,.36,1), color .25s ease; }
 #proyectos article header { border-color: var(--border-strong); }
-#proyectos article .bg-bg-secondary { background: var(--bg-secondary); }
 #experiencia [data-entry] { border-color: var(--border); scroll-margin-top: 7rem; }
 #experiencia [data-entry]:hover { opacity: 1 !important; }
 .experience-year {
@@ -185,6 +185,223 @@ header.fixed nav { max-width: 80rem; }
 
 /* Refined form surface */
 #contacto .border.bg-bg-secondary\/40 { background: var(--bg-secondary); }
+
+/* ===== TechStack: radar/orbit system ===== */
+#tecnologias {
+  --radar-ring-1: color-mix(in srgb, var(--accent) 55%, transparent);
+  --radar-ring-2: color-mix(in srgb, var(--online) 50%, transparent);
+  --radar-ring-3: color-mix(in srgb, var(--private) 50%, transparent);
+  --radar-ring-4: color-mix(in srgb, var(--danger) 45%, transparent);
+  --radar-ring-5: color-mix(in srgb, var(--text-secondary) 50%, transparent);
+  --radar-ring-6: color-mix(in srgb, var(--accent-hover) 50%, transparent);
+}
+.radar-stage { touch-action: manipulation; container-type: size; overflow: visible; }
+.radar-ring {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border-radius: 9999px;
+  border: 1px dashed color-mix(in srgb, var(--border-strong) 55%, transparent);
+  pointer-events: none;
+}
+.radar-ring--1 { width: 30%; height: 30%; }
+.radar-ring--2 { width: 44%; height: 44%; }
+.radar-ring--3 { width: 58%; height: 58%; }
+.radar-ring--4 { width: 72%; height: 72%; }
+.radar-ring--5 { width: 86%; height: 86%; }
+.radar-axis {
+  position: absolute;
+  background: color-mix(in srgb, var(--border) 65%, transparent);
+  pointer-events: none;
+}
+.radar-axis--h { top: 50%; left: 4%; right: 4%; height: 1px; }
+.radar-axis--v { left: 50%; top: 4%; bottom: 4%; width: 1px; }
+.radar-sweep {
+  position: absolute;
+  inset: 6%;
+  border-radius: 9999px;
+  pointer-events: none;
+  background: conic-gradient(from 0deg, color-mix(in srgb, var(--accent) 16%, transparent), transparent 22%);
+  animation: radar-spin 9s linear infinite;
+  opacity: .8;
+}
+@keyframes radar-spin { to { rotate: 360deg; } }
+.radar-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 17%;
+  aspect-ratio: 1;
+  border-radius: 9999px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-secondary);
+  color: var(--accent);
+  box-shadow: 0 0 0 6px color-mix(in srgb, var(--accent) 7%, transparent), 0 14px 40px -18px rgba(0,0,0,.55);
+  pointer-events: none;
+}
+.radar-chip {
+  --mx: 50%;
+  --my: 50%;
+  top: 50%;
+  left: 50%;
+  border: 1px solid var(--border);
+  background: color-mix(in srgb, var(--bg-primary) 88%, transparent);
+  padding: .28rem .6rem;
+  cursor: pointer;
+  transition: color .25s ease, border-color .25s ease, opacity .25s ease, background-color .25s ease;
+  /* Orbit: rotate → push out a radius in cqw (relative to the stage size,
+     NOT the chip's own width) → counter-rotate so the label stays upright. */
+  animation: chip-orbit calc(60s + var(--ring) * 18s) linear infinite;
+  animation-delay: calc(var(--ring) * -9s);
+}
+@keyframes chip-orbit {
+  /* translate(-50%,-50%) first: orbit around the chip's own center, not its
+     top-left corner (fixes asymmetric overflow). */
+  from { transform: translate(-50%, -50%) rotate(calc(var(--angle) + var(--ring) * 11deg)) translateX(calc(15.5cqw + var(--ring) * 7.2cqw)) rotate(calc(-1 * var(--angle) - var(--ring) * 11deg)); }
+  to { transform: translate(-50%, -50%) rotate(calc(var(--angle) + var(--ring) * 11deg + 360deg)) translateX(calc(15.5cqw + var(--ring) * 7.2cqw)) rotate(calc(-1 * var(--angle) - var(--ring) * 11deg - 360deg)); }
+}
+/* Alternate rotation direction per ring for visual variety */
+.radar-chip--rev { animation-name: chip-orbit-rev; }
+@keyframes chip-orbit-rev {
+  from { transform: translate(-50%, -50%) rotate(calc(var(--angle) + var(--ring) * 11deg)) translateX(calc(15.5cqw + var(--ring) * 7.2cqw)) rotate(calc(-1 * var(--angle) - var(--ring) * 11deg)); }
+  to { transform: translate(-50%, -50%) rotate(calc(var(--angle) + var(--ring) * 11deg - 360deg)) translateX(calc(15.5cqw + var(--ring) * 7.2cqw)) rotate(calc(-1 * var(--angle) - var(--ring) * 11deg + 360deg)); }
+}
+.radar-chip:hover, .radar-chip--active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, var(--bg-primary));
+  animation-play-state: paused;
+}
+.radar-chip--dim { opacity: .3; }
+/* Entrance */
+.radar-stage--in .radar-chip { animation-name: chip-orbit; }
+.radar-stage:not(.radar-stage--in) .radar-chip { opacity: 0; }
+.radar-stage--in .radar-chip { opacity: 1; transition: opacity .5s ease; }
+/* Connection line from stage edge to active chip (drawn via background on stage) */
+.radar-stage { --mx: 50%; --my: 50%; }
+.radar-stage::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(220px circle at var(--mx) var(--my), color-mix(in srgb, var(--accent) 6%, transparent), transparent 70%);
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+.radar-stage:has(.radar-chip--active)::after { opacity: 1; }
+.radar-readout { animation: radar-readout-in .3s cubic-bezier(.22,1,.36,1) both; }
+@keyframes radar-readout-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.radar-panel { box-shadow: 0 20px 50px -28px rgba(0,0,0,.55); }
+.radar-scan {
+  position: absolute;
+  inset-inline: 0;
+  top: -30%;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--accent) 8%, transparent), transparent);
+  animation: radar-scan-move 4s cubic-bezier(.4,0,.6,1) infinite;
+  pointer-events: none;
+}
+@keyframes radar-scan-move {
+  0% { top: -30%; }
+  60%, 100% { top: 105%; }
+}
+.radar-legend-dot {
+  width: .5rem;
+  height: .5rem;
+  border-radius: 9999px;
+  background: var(--ring-color);
+  box-shadow: 0 0 6px color-mix(in srgb, var(--ring-color) 60%, transparent);
+}
+/* Mobile chip grid: replaces the radar on small screens (see TechStack.jsx) */
+/* Hidden by default; shown ONLY below md (767px) so it can never coexist
+   with the radar. Plain media query because un-layered CSS would otherwise
+   beat Tailwind's md:hidden utility at every width. */
+.tech-chip-grid {
+  display: none;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: .5rem;
+  animation: tools-item-in .5s cubic-bezier(.22, 1, .36, 1) both;
+}
+@media (max-width: 767px) {
+  .tech-chip-grid { display: grid; }
+}
+@media (min-width: 480px) and (max-width: 767px) {
+  .tech-chip-grid { grid-template-columns: repeat(3, 1fr); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tech-chip-grid { animation: none !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .radar-sweep, .radar-scan { animation: none !important; opacity: .25; }
+  .radar-chip { animation: none !important; transform: translate(-50%, -50%) rotate(calc(var(--angle) + var(--ring) * 11deg)) translateX(calc(15.5cqw + var(--ring) * 7.2cqw)) rotate(calc(-1 * var(--angle) - var(--ring) * 11deg)) !important; }
+  .radar-readout { animation: none !important; }
+}
+
+/* ===== Tools: terminal surfaces ===== */
+.tools-terminal { box-shadow: 0 24px 60px -30px rgba(0, 0, 0, .6); }
+/* Accordion collapse: grid-rows trick animates height 0 → auto */
+.tools-collapse {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .35s cubic-bezier(.22, 1, .36, 1);
+}
+.tools-collapse[data-open='true'] { grid-template-rows: 1fr; }
+.tools-collapse > div { overflow: hidden; min-height: 0; }
+/* Collapsed panels must contribute zero height — hide residual outlines/borders */
+.tools-collapse[data-open='false'] > div { visibility: hidden; }
+.tools-collapse .tools-log-item[data-revealed='true'] { animation: tools-item-in .4s cubic-bezier(.22, 1, .36, 1) both; }
+.tools-chevron { display: inline-flex; }
+@media (prefers-reduced-motion: reduce) {
+  .tools-collapse { transition: none !important; }
+  .tools-collapse .tools-log-item[data-revealed='true'] { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+@media (max-width: 640px) {
+  /* Phone: compact terminal title bar, readable tabs */
+  .tools-terminal .u-label { font-size: .58rem; }
+  .tools-tab { padding: .55rem .7rem; font-size: .58rem; }
+  .tools-log-item { padding-top: .8rem; padding-bottom: .8rem; }
+}
+.tools-dot { width: .55rem; height: .55rem; border-radius: 9999px; display: inline-block; }
+.tools-dot--r { background: color-mix(in srgb, var(--danger) 75%, transparent); }
+.tools-dot--y { background: color-mix(in srgb, var(--private) 75%, transparent); }
+.tools-dot--g { background: color-mix(in srgb, var(--online) 75%, transparent); }
+.tools-ping {
+  border-radius: 9999px;
+  background: var(--online);
+  opacity: .6;
+  animation: tools-ping 1.8s cubic-bezier(0, 0, .2, 1) infinite;
+}
+@keyframes tools-ping {
+  75%, 100% { transform: scale(2.4); opacity: 0; }
+}
+.tools-tab--in {
+  animation: tools-item-in .5s cubic-bezier(.22, 1, .36, 1) both;
+}
+.tools-log-item {
+  opacity: 0;
+  transform: translateX(-8px);
+}
+.tools-log-item[data-revealed='true'] {
+  animation: tools-item-in .4s cubic-bezier(.22, 1, .36, 1) both;
+}
+@keyframes tools-item-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tools-tab--in, .tools-log-item[data-revealed='true'] { animation: none !important; opacity: 1 !important; transform: none !important; }
+  .tools-log-item { opacity: 1; transform: none; }
+  .tools-ping { animation: none !important; display: none; }
+}
 
 @media (max-width: 767px) {
   section:not(#inicio)::before { left: 1.25rem; right: 1.25rem; }
