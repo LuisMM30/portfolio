@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap: descomenta y sustituye por tu dominio real al desplegar
-# Sitemap: https://TU-DOMINIO/sitemap.xml
+Sitemap: https://luismontesdeoca.vercel.app/sitemap.xml

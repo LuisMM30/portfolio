@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- IMPORTANTE: sustituye TU-DOMINIO por tu dominio real antes de desplegar. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://TU-DOMINIO/</loc>
+    <loc>https://luismontesdeoca.vercel.app/</loc>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://TU-DOMINIO/proyectos</loc>
+    <loc>https://luismontesdeoca.vercel.app/proyectos</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://TU-DOMINIO/aviso-legal</loc>
+    <loc>https://luismontesdeoca.vercel.app/aviso-legal</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
   <url>
-    <loc>https://TU-DOMINIO/politica-privacidad</loc>
+    <loc>https://luismontesdeoca.vercel.app/politica-privacidad</loc>
     <changefreq>yearly</changefreq>
     <priority>0.2</priority>
   </url>
