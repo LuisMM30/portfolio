@@ -9,7 +9,6 @@ export default function About() {
         <SectionHeading
           index="06"
           title="Construyo productos web para necesidades reales."
-          subtitle="Una forma de trabajar orientada a aportar valor desde el primer día."
           id="sobre-mi"
         />
 

@@ -74,7 +74,6 @@ export default function Experience() {
         <SectionHeading
           index="02"
           title="Experiencia"
-          subtitle="Colaboraciones, prácticas y proyectos desarrollados para empresas y clientes reales."
           id="experiencia"
         />
 
@@ -145,12 +144,12 @@ export default function Experience() {
                   <h3 className="text-2xl font-semibold tracking-tight text-text-primary md:text-3xl">
                     {item.role}
                   </h3>
-                  <span className="u-label text-text-secondary">{item.org}</span>
+                  <span className="font-mono text-sm uppercase tracking-[.12em] text-text-secondary">{item.org}</span>
                 </div>
 
-                <p className="u-label mt-3 text-text-muted">{item.period}</p>
+                <p className="mt-3 font-mono text-xs uppercase tracking-[.12em] text-text-muted">{item.period}</p>
 
-                <p className="mt-5 max-w-2xl text-text-secondary leading-relaxed">{item.summary}</p>
+                <p className="mt-5 max-w-2xl text-sm text-text-secondary leading-relaxed">{item.summary}</p>
 
                 <p className="mt-5 flex flex-wrap gap-x-2 gap-y-1 font-mono text-xs text-text-muted">
                   {item.technologies.map((tech, idx) => (

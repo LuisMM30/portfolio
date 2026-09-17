@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { ChevronDown, ChevronRight, Cpu, Sparkles } from 'lucide-react'
-import { toolCategories, aiMessage } from '../../data/tools'
+import { toolCategories } from '../../data/tools'
 import SectionHeading from '../ui/SectionHeading'
 import useInView from '../../hooks/useInView'
 
@@ -121,9 +121,7 @@ export default function Tools() {
         <SectionHeading
           index="05"
           title="Herramientas e IA"
-          subtitle={aiMessage}
           id="herramientas"
-          sticky={false}
         />
 
         <div
@@ -191,10 +189,6 @@ export default function Tools() {
                 onToggle={() => setOpenMobileIndex(openMobileIndex === index ? null : index)}
               />
             ))}
-            <p className="u-label flex items-center gap-2 px-5 py-5 text-text-muted">
-              <Sparkles size={13} aria-hidden="true" className="text-accent" />
-              La IA apoya el flujo, siempre con revisión técnica y criterio propio.
-            </p>
           </div>
 
           {/* Desktop: tabs + single log panel */}
@@ -231,10 +225,6 @@ export default function Tools() {
 
             <div className="px-5 py-6" role="tabpanel">
               <ToolLog tools={tools} inView={sectionInView} keyPrefix={category.title} />
-              <p className="u-label mt-6 flex items-center gap-2 text-text-muted">
-                <Sparkles size={13} aria-hidden="true" className="text-accent" />
-                La IA apoya el flujo, siempre con revisión técnica y criterio propio.
-              </p>
             </div>
           </div>
         </div>
