@@ -26,12 +26,16 @@ export default function HeroInfoVariants({ rows }) {
           </div>
 
           {/* Mobile: portrait crop (height > width, centered); sm+: narrow strip stretched to the rows' height */}
-          <img
-            src="/images/luis-portrait.jpg"
-            alt="Foto de Luis Montes de Oca"
-            loading="lazy"
-            className="mx-auto aspect-[3/4] h-72 w-auto max-w-full shrink-0 rounded-sm border border-border object-cover object-[50%_20%] sm:aspect-auto sm:h-auto sm:w-20 md:w-24"
-          />
+          <picture>
+            {/* Desktop: narrow strip -> face-and-shoulders crop for detail */}
+            <source media="(min-width: 640px)" srcSet="/images/luis-portrait-face.jpg" />
+            <img
+              src="/images/luis-portrait.jpg"
+              alt="Foto de Luis Montes de Oca"
+              loading="lazy"
+              className="mx-auto aspect-[3/4] h-72 w-auto max-w-full shrink-0 rounded-sm border border-border object-cover object-[50%_20%] sm:aspect-auto sm:h-auto sm:w-20 md:w-24"
+            />
+          </picture>
         </div>
 
         <div className="mt-2 border-t border-border pt-2 text-accent">$ status --available</div>
