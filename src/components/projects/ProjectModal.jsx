@@ -16,6 +16,7 @@ function Section({ label, children }) {
 export default function ProjectModal({ project, isOpen, onClose }) {
   const closeButtonRef = useRef(null)
   const panelRef = useRef(null)
+  const contentRef = useRef(null)
   const open = isOpen && Boolean(project?.details)
 
   useEffect(() => {
@@ -27,13 +28,14 @@ export default function ProjectModal({ project, isOpen, onClose }) {
 
     document.addEventListener('keydown', handleKeyDown)
     document.body.style.overflow = 'hidden'
+    contentRef.current?.scrollTo({ top: 0, left: 0, behavior: 'auto' })
     closeButtonRef.current?.focus()
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown)
       document.body.style.overflow = ''
     }
-  }, [open, onClose])
+  }, [open, onClose, project?.slug])
 
   const { details } = project ?? {}
 
@@ -55,6 +57,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
       {/* Panel */}
       <div className="absolute inset-0 flex items-end justify-center sm:items-center sm:p-6">
         <div
+          ref={contentRef}
           className={cn(
             'max-h-[92vh] w-full overflow-y-auto border border-border bg-bg-primary transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] sm:max-h-[88vh] sm:max-w-3xl lg:max-w-4xl',
             open ? 'translate-y-0' : 'translate-y-6',
