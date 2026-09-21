@@ -27,8 +27,8 @@ export default function HeroInfoVariants({ rows }) {
 
           {/* Mobile: portrait crop (height > width, centered); sm+: narrow strip stretched to the rows' height */}
           <picture>
-            {/* Desktop: narrow strip -> face-and-shoulders crop for detail */}
-            <source media="(min-width: 640px)" srcSet="/images/luis-portrait-face.jpg" />
+            {/* Desktop: narrow strip -> full head-and-shoulders crop for detail */}
+            <source media="(min-width: 640px)" srcSet="/images/luis-portrait-desktop.jpg" />
             <img
               src="/images/luis-portrait.jpg"
               alt="Foto de Luis Montes de Oca"
