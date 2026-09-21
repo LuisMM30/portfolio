@@ -33,7 +33,7 @@ export default function HeroInfoVariants({ rows }) {
               src="/images/luis-portrait.jpg"
               alt="Foto de Luis Montes de Oca"
               loading="lazy"
-              className="mx-auto block aspect-[3/4] h-72 w-auto max-w-full rounded-sm border border-border object-cover object-[50%_20%] sm:mx-0 sm:aspect-auto sm:h-[102px] sm:w-20 md:h-[122px] md:w-24"
+              className="mx-auto block aspect-[3/4] h-72 w-auto max-w-full rounded-sm border border-border object-contain object-center sm:mx-0 sm:aspect-auto sm:h-[102px] sm:w-20 md:h-[122px] md:w-24"
             />
           </picture>
         </div>
