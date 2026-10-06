@@ -152,9 +152,7 @@ export default function Experience() {
                 id={`experiencia-${i + 1}`}
                 data-entry
                 data-index={i}
-                className={`border-b border-border py-10 first:pt-0 last:border-b-0 md:py-14 transition-opacity duration-[144ms] ${
-                  i === activeIndex ? 'opacity-100' : 'opacity-60'
-                }`}
+                className="border-b border-border py-10 first:pt-0 last:border-b-0 md:py-14"
                 onMouseEnter={() => setHoveredIndex(i)}
               >
                 <div className="flex flex-wrap items-baseline gap-x-4 gap-y-1">
@@ -165,11 +163,11 @@ export default function Experience() {
                   <span className="font-mono text-sm uppercase tracking-[.12em] text-text-secondary">{item.org}</span>
                 </div>
 
-                <p className="mt-3 font-mono text-xs uppercase tracking-[.12em] text-text-muted">{item.period}</p>
+                <p className="mt-3 font-mono text-xs uppercase tracking-[.12em] text-text-secondary">{item.period}</p>
 
                 <p className="mt-5 max-w-2xl text-sm text-text-secondary leading-relaxed">{item.summary}</p>
 
-                <p className="mt-5 flex flex-wrap gap-x-2 gap-y-1 font-mono text-xs text-text-muted">
+                <p className="mt-5 flex flex-wrap gap-x-2 gap-y-1 font-mono text-xs text-text-secondary">
                   {item.technologies.map((tech, idx) => (
                     <span key={tech} className="inline-flex items-baseline gap-2">
                       {idx > 0 && <span aria-hidden="true">/</span>}

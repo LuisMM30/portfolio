@@ -114,7 +114,7 @@ export default function Contact() {
           <div className="flex min-w-0 lg:col-span-1">
             <div className="terminal-box flex w-full flex-col border border-border bg-bg-secondary font-mono text-xs">
               <div className="flex h-[62px] items-center justify-between border-b border-border px-6 py-0 text-text-muted">
-                <span className="flex items-center gap-2"><span className="text-accent">›_</span> contact.channels</span>
+                <span className="flex items-center gap-2"><span className="text-accent">›_</span> {t('sections.contactChannels')}</span>
                 <span className="text-accent">●</span>
               </div>
               <ul className="divide-y divide-border">
@@ -163,7 +163,7 @@ export default function Contact() {
           <div className="flex min-w-0 lg:col-span-1">
             <div className="terminal-box flex w-full flex-col border border-border bg-bg-secondary">
               <div className="flex h-[62px] items-center justify-between border-b border-border px-6 py-0 font-mono text-xs text-text-muted">
-                <span className="flex items-center gap-2"><span className="text-accent">›_</span> send.message</span>
+                <span className="flex items-center gap-2"><span className="text-accent">›_</span> {t('sections.sendMessage')}</span>
                 <span className="text-accent">●</span>
               </div>
               <div className="flex flex-1 flex-col px-6 pb-5 pt-[31px]">
