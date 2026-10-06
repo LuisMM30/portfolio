@@ -3,6 +3,7 @@ import { ChevronDown, ChevronRight, Cpu, Sparkles } from 'lucide-react'
 import { toolCategories } from '../../data/tools'
 import SectionHeading from '../ui/SectionHeading'
 import useInView from '../../hooks/useInView'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 const GLYPHS = '!<>-_\\/[]{}=+*^?#01'
 
@@ -109,18 +110,20 @@ function CategoryAccordion({ item, index, inView, isOpen, onToggle }) {
 }
 
 export default function Tools() {
+  const { t } = useI18n()
   const [activeIndex, setActiveIndex] = useState(0)
   const [openMobileIndex, setOpenMobileIndex] = useState(null)
   const [sectionRef, sectionInView] = useInView(0.1)
   const category = toolCategories[activeIndex]
   const tools = useMemo(() => category?.tools ?? [], [category])
+  const translatedCategories = toolCategories.map((item, index) => ({ ...item, title: t(`data.tools.${index}`) }))
 
   return (
     <section className="py-24 md:py-36" ref={sectionRef}>
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHeading
           index="05"
-          title="Herramientas e IA"
+          title={t('sections.tools')}
           id="herramientas"
         />
 
@@ -139,14 +142,14 @@ export default function Tools() {
             </div>
             <p className="u-label flex items-center gap-2 text-text-muted">
               <Cpu size={13} aria-hidden="true" className="text-accent" />
-              toolkit — flujo de trabajo
+              {t('sections.toolkit')}
             </p>
             <p className="u-label hidden items-center gap-1.5 text-text-muted sm:flex" aria-hidden="true">
               <span className="relative flex h-1.5 w-1.5">
                 <span className="tools-ping absolute inline-flex h-full w-full" />
                 <span className="relative inline-flex h-1.5 w-1.5 bg-online" />
               </span>
-              IA activa
+              {t('sections.aiActive')}
             </p>
           </div>
 
@@ -162,7 +165,7 @@ export default function Tools() {
             </p>
             <p className="u-label mt-2 pl-6 text-text-muted">
               <TypedText
-                text={`// ${toolCategories.reduce((acc, c) => acc + c.tools.length, 0)} herramientas listadas · ${toolCategories.length} módulos`}
+                text={t('sections.listedTools', { count: toolCategories.reduce((acc, c) => acc + c.tools.length, 0), modules: toolCategories.length })}
                 play={sectionInView}
                 speed={12}
               />
@@ -179,7 +182,7 @@ export default function Tools() {
 
           {/* Mobile / tablet: accordion — title + count + expandable tools */}
           <div className="lg:hidden">
-            {toolCategories.map((item, index) => (
+            {translatedCategories.map((item, index) => (
               <CategoryAccordion
                 key={item.title}
                 item={item}
@@ -193,8 +196,8 @@ export default function Tools() {
 
           {/* Desktop: tabs + single log panel */}
           <div className="hidden lg:block">
-            <div className="flex flex-wrap gap-2 border-b border-border px-5 py-4" role="tablist" aria-label="Categorías de herramientas">
-              {toolCategories.map((item, index) => {
+            <div className="flex flex-wrap gap-2 border-b border-border px-5 py-4" role="tablist" aria-label={t('sections.toolCategories')}>
+              {translatedCategories.map((item, index) => {
                 const isActive = index === activeIndex
                 return (
                   <button

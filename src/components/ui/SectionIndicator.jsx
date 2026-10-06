@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 import { scrollToSection } from '../../utils/scrollToSection'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 export default function SectionIndicator({ sections }) {
+  const { t } = useI18n()
   const [active, setActive] = useState(sections[0]?.id ?? '')
 
   // Sección activa calculada por posición de scroll (determinista en ambas direcciones).
@@ -67,7 +69,7 @@ export default function SectionIndicator({ sections }) {
 
   return (
     <nav
-      aria-label="Índice de secciones"
+      aria-label={t('nav.sections')}
       className={`fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-end gap-2 transition-opacity duration-500 xl:flex ${
         // Oculto mientras se ve la hero (inicio); aparece a partir de Experiencia
         active === sections[0]?.id ? 'pointer-events-none opacity-0' : 'opacity-100'

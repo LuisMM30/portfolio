@@ -5,8 +5,10 @@ import Button from '../ui/Button'
 import BrowserMockup from '../ui/BrowserMockup'
 import CopyUrlButton from '../ui/CopyUrlButton'
 import { cn } from '../../utils/cn'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 function ProjectFigure({ project, variant = 'desktop' }) {
+  const { t } = useI18n()
   const frameRef = useRef(null)
   const imgRef = useRef(null)
   const [revealed, setRevealed] = useState(false)
@@ -44,7 +46,7 @@ function ProjectFigure({ project, variant = 'desktop' }) {
         <BrowserMockup
           ref={undefined}
           src={project.images.desktop}
-          alt={`Vista previa de ${project.title}`}
+          alt={t('common.projectPreviewAlt', { project: project.title })}
           url={project.url || 'proyecto-privado'}
           imgRef={imgRef}
           variant={variant}
@@ -63,6 +65,7 @@ function ProjectFigure({ project, variant = 'desktop' }) {
 }
 
 export default function ProjectShowcase({ project, index, onOpenModal }) {
+  const { t } = useI18n()
   const reversed = index % 2 !== 0
   const badgeVariant = project.status === 'online' ? 'online' : 'private'
   const rowRef = useRef(null)
@@ -88,7 +91,7 @@ export default function ProjectShowcase({ project, index, onOpenModal }) {
             inflates the grid track and the row overflows the right margin. */}
         <div className={cn('min-w-0 lg:col-span-5', reversed ? 'lg:order-2' : 'lg:order-1')}>
           <h3
-            className="display text-3xl text-text-primary transition-transform duration-500 group-hover:translate-x-2 md:text-4xl xl:text-5xl"
+            className="display break-all text-[28px] text-text-primary transition-transform duration-500 group-hover:translate-x-2 min-[380px]:break-normal min-[380px]:text-3xl md:text-4xl xl:text-5xl"
             data-cursor={project.ctaType === 'modal' ? 'view' : undefined}
           >
             {project.title}
@@ -108,7 +111,7 @@ export default function ProjectShowcase({ project, index, onOpenModal }) {
           {project.desktopOnly && (
             <p className="mt-3 flex items-center gap-2 text-sm text-text-muted">
               <Monitor size={15} aria-hidden="true" className="shrink-0" />
-              Único proyecto de esta página no responsive: preparado solo para ordenadores.
+              {t('copy.projectHints.nonResponsive')}
             </p>
           )}
 

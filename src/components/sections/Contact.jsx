@@ -4,11 +4,13 @@ import { site } from '../../data/site'
 import SectionHeading from '../ui/SectionHeading'
 import Button from '../ui/Button'
 import DownloadCVButton from '../ui/DownloadCVButton'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 const fieldClasses =
   'w-full bg-transparent border-0 border-b border-border py-[7px] text-text-primary placeholder:text-text-muted focus:border-accent focus:outline-none transition-colors min-h-[40px]'
 
 export default function Contact() {
+  const { t } = useI18n()
   const [formState, setFormState] = useState({
     name: '',
     email: '',
@@ -30,12 +32,12 @@ export default function Contact() {
 
     // Validación en cliente: el form usa noValidate, así que esta es la única barrera.
     const nextErrors = {}
-    if (formState.name.trim().length < 2) nextErrors.name = 'Indica tu nombre.'
+    if (formState.name.trim().length < 2) nextErrors.name = t('form.nameRequired')
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formState.email.trim())) {
-      nextErrors.email = 'Introduce un email válido.'
+      nextErrors.email = t('form.emailInvalid')
     }
     if (formState.reason.trim().length < 10) {
-      nextErrors.reason = 'Cuéntame un poco más (mínimo 10 caracteres).'
+      nextErrors.reason = t('form.messageRequired')
     }
     setErrors(nextErrors)
     if (Object.keys(nextErrors).length > 0) return
@@ -49,9 +51,9 @@ export default function Contact() {
     const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT
 
     if (!endpoint) {
-      const subject = encodeURIComponent(`Contacto portfolio — ${payload.reason}`)
+      const subject = encodeURIComponent(t('form.subject', { name: payload.name }))
       const body = encodeURIComponent(
-        `Nombre: ${payload.name}\nEmail: ${payload.email}\nMotivo: ${payload.reason}`,
+        t('form.body', { name: payload.name, email: payload.email, reason: payload.reason }),
       )
       const mailtoUrl = `mailto:${site.email}?subject=${subject}&body=${body}`
       setFormState({ name: '', email: '', reason: '' })
@@ -66,15 +68,15 @@ export default function Contact() {
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify({
           ...payload,
-          _subject: `Contacto portfolio — ${payload.name}`,
+          _subject: t('form.subject', { name: payload.name }),
           _captcha: 'false',
         }),
       })
 
-      if (!response.ok) throw new Error('Error al enviar')
+      if (!response.ok) throw new Error(t('form.sendError'))
 
       const result = await response.json().catch(() => null)
-      if (result && result.success === 'false') throw new Error('Envío rechazado')
+      if (result && result.success === 'false') throw new Error(t('form.rejected'))
 
       setStatus('success')
       setFormState({ name: '', email: '', reason: '' })
@@ -103,13 +105,13 @@ export default function Contact() {
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHeading
           index="07"
-          title="Construyamos algo"
+          title={t('sections.contact')}
           id="contacto"
         />
 
         <div className="mt-0 grid gap-x-14 gap-y-14 lg:grid-cols-[43fr_57fr] lg:items-stretch">
           {/* Direct channels */}
-          <div className="flex lg:col-span-1">
+          <div className="flex min-w-0 lg:col-span-1">
             <div className="terminal-box flex w-full flex-col border border-border bg-bg-secondary font-mono text-xs">
               <div className="flex h-[62px] items-center justify-between border-b border-border px-6 py-0 text-text-muted">
                 <span className="flex items-center gap-2"><span className="text-accent">›_</span> contact.channels</span>
@@ -122,10 +124,10 @@ export default function Contact() {
                     href={row.href}
                     {...(row.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     data-cursor="talk"
-                    className="group flex items-center justify-between gap-4 px-6 py-[31px] transition-colors hover:bg-bg-elevated"
+                    className="group flex min-w-0 items-center justify-between gap-3 px-4 py-6 transition-colors hover:bg-bg-elevated sm:gap-4 sm:px-6 sm:py-[31px]"
                   >
                     <span className="u-label text-text-muted">{row.label}</span>
-                    <span className="inline-flex items-center gap-2 break-all text-right font-medium text-text-primary">
+                    <span className="inline-flex min-w-0 items-center gap-2 break-all text-right font-medium text-text-primary">
                       {row.value}
                       <ArrowUpRight
                         size={16}
@@ -137,19 +139,19 @@ export default function Contact() {
                 </li>
               ))}
               </ul>
-              <div className="mt-auto border-t border-border px-6 py-5">
-                <div className="flex items-center justify-between gap-4">
+              <div className="mt-auto border-t border-border px-4 py-5 sm:px-6">
+                <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
                   <div>
-                    <p className="u-label mb-1 text-text-muted">Currículum</p>
+                    <p className="u-label mb-1 text-text-muted">{t('sections.curriculum')}</p>
                     <p className="text-sm text-text-secondary">
-                      Experiencia y formación en detalle, en PDF.
+                      {t('sections.curriculumDescription')}
                     </p>
                   </div>
                   <DownloadCVButton
                     variant="primary"
                     size="contact"
-                    label="Descargar CV"
-                    className="min-h-0 h-10 self-end font-sans"
+                    label={t('common.downloadCv')}
+                    className="min-h-0 h-10 max-w-full self-start whitespace-normal text-left font-sans sm:self-end"
                   />
                 </div>
               </div>
@@ -158,7 +160,7 @@ export default function Contact() {
           </div>
 
           {/* Form */}
-          <div className="flex lg:col-span-1">
+          <div className="flex min-w-0 lg:col-span-1">
             <div className="terminal-box flex w-full flex-col border border-border bg-bg-secondary">
               <div className="flex h-[62px] items-center justify-between border-b border-border px-6 py-0 font-mono text-xs text-text-muted">
                 <span className="flex items-center gap-2"><span className="text-accent">›_</span> send.message</span>
@@ -170,7 +172,7 @@ export default function Contact() {
                 <div className="grid gap-x-8 gap-y-[17px] sm:grid-cols-2">
                   <div>
                     <label htmlFor="name" className="u-label mb-1 block text-text-muted">
-                      Nombre
+                      {t('sections.name')}
                     </label>
                     <input
                       type="text"
@@ -182,7 +184,7 @@ export default function Contact() {
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.name)}
                       className={fieldClasses}
-                      placeholder="Tu nombre"
+                      placeholder={t('sections.placeholderName')}
                     />
                     {errors.name && <p className="mt-1 text-sm text-danger">{errors.name}</p>}
                   </div>
@@ -200,7 +202,7 @@ export default function Contact() {
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.email)}
                       className={fieldClasses}
-                      placeholder="tu@email.com"
+                      placeholder={t('sections.placeholderEmail')}
                     />
                     {errors.email && <p className="mt-1 text-sm text-danger">{errors.email}</p>}
                   </div>
@@ -208,7 +210,7 @@ export default function Contact() {
 
                 <div>
                   <label htmlFor="reason" className="u-label mb-1 block text-text-muted">
-                    Mensaje
+                    {t('sections.message')}
                   </label>                    <input
                       type="text"
                       id="reason"
@@ -218,7 +220,7 @@ export default function Contact() {
                       onChange={handleChange}
                       aria-invalid={Boolean(errors.reason)}
                       className={fieldClasses}
-                      placeholder="Mi idea es..."
+                      placeholder={t('sections.placeholderMessage')}
                     />
                     {errors.reason && (
                       <p className="mt-1 text-sm text-danger">{errors.reason}</p>
@@ -233,7 +235,7 @@ export default function Contact() {
                     data-cursor="talk"
                     className="min-h-0 h-10 font-sans"
                   >
-                    Enviar mensaje
+                    {t('sections.sendMessage')}
                     <Send size={16} aria-hidden="true" />
                   </Button>
 
@@ -243,8 +245,8 @@ export default function Contact() {
                         <CheckCircle size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
                         <span>
                           {hasEndpoint
-                            ? 'Mensaje enviado. Gracias, te responderé lo antes posible.'
-                            : 'Mensaje preparado: se abrirá tu cliente de correo para enviarlo.'}
+                            ? t('form.sent')
+                            : t('form.mailtoReady')}
                         </span>
                       </p>
                     )}
@@ -252,8 +254,7 @@ export default function Contact() {
                       <p className="flex items-start gap-2 text-sm text-danger" role="alert">
                         <AlertCircle size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
                         <span>
-                          No se pudo enviar el mensaje. Inténtalo de nuevo o escríbeme a{' '}
-                          {site.email}.
+                          {t('form.failed', { email: site.email })}
                         </span>
                       </p>
                     )}

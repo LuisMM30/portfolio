@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer'
 import SectionIndicator from './components/ui/SectionIndicator'
 import { sectionIndex } from './data/navigation'
 import { scrollToSection } from './utils/scrollToSection'
+import { useI18n } from './i18n/LocaleProvider'
 import Hero from './components/sections/Hero'
 import Experience from './components/sections/Experience'
 import Capabilities from './components/sections/Capabilities'
@@ -17,6 +18,7 @@ const Contact = lazy(() => import('./components/sections/Contact').then(m => ({ 
 
 function App() {
   const location = useLocation()
+  const { t } = useI18n()
 
   // Scroll a la sección cuando se llega a / con un hash (p. ej. /#sobre-mi).
   // Se reintenta un tiempo porque alguna sección (Contacto) se carga con lazy
@@ -40,7 +42,8 @@ function App() {
   }, [location])
 
   // La sección Proyectos vive ahora en /proyectos: la quitamos del índice lateral
-  const homeSections = sectionIndex.filter((s) => s.id !== 'proyectos')
+  const navKeys = { inicio: 'home', experiencia: 'experience', servicios: 'capabilities', tecnologias: 'technologies', herramientas: 'tools', 'sobre-mi': 'aboutSection', contacto: 'contact' }
+  const homeSections = sectionIndex.filter((s) => s.id !== 'proyectos').map((section) => ({ ...section, label: t(`nav.${navKeys[section.id] ?? section.id}`) }))
 
   return (
     <>

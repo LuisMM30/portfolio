@@ -3,6 +3,7 @@ import { Radar } from 'lucide-react'
 import { skillCategories } from '../../data/skills'
 import SectionHeading from '../ui/SectionHeading'
 import useInView from '../../hooks/useInView'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 /* One orbiting chip. Position is computed with CSS custom properties; the
    animation itself lives in index.css so prefers-reduced-motion is respected. */
@@ -49,10 +50,11 @@ function OrbitChip({ skill, ringSlot, angleDeg, isActive, isDimmed, onSelect }) 
 }
 
 function RadarReadout({ activeSkill }) {
+  const { t } = useI18n()
   if (!activeSkill) {
     return (
       <p className="u-label leading-relaxed text-text-muted">
-        Sistema listo. Activa un nodo del radar para ver la descripción de la tecnología.
+        {t('sections.readyTech')}
       </p>
     )
   }
@@ -68,6 +70,7 @@ function RadarReadout({ activeSkill }) {
 }
 
 export default function TechStack() {
+  const { t, locale } = useI18n()
   const [activeName, setActiveName] = useState(null)
   const [stageRef, stageInView] = useInView(0.15)
 
@@ -99,13 +102,20 @@ export default function TechStack() {
   }, [allSkills])
 
   const activeSkill = chips.find((c) => c.name === activeName) ?? null
+  const skillIndex = activeSkill ? skillCategories.flatMap((category) => category.skills).findIndex((skill) => skill.name === activeSkill.name) : -1
+  const translatedActiveSkill = activeSkill
+    ? {
+        ...activeSkill,
+        description: locale === 'es' ? activeSkill.description : t(`data.skillGroups.${skillIndex}.description`),
+      }
+    : null
 
   return (
     <section className="py-24 md:py-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHeading
           index="04"
-          title="Tecnologías con las que trabajo"
+          title={t('sections.technologies')}
           singleLine
           id="tecnologias"
         />
@@ -182,10 +192,10 @@ export default function TechStack() {
               <div className="relative">
                 <p className="u-label flex items-center gap-2 text-text-muted">
                   <Radar size={14} aria-hidden="true" className="text-accent" />
-                  Descripción de la tecnología
+                  {t('sections.stackDescription')}
                 </p>
                 <div className="mt-5 min-h-[130px]">
-                  <RadarReadout activeSkill={activeSkill} />
+                  <RadarReadout activeSkill={translatedActiveSkill} />
                 </div>
               </div>
             </div>

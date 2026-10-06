@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ArrowUpRight, FolderOpen, User, X } from 'lucide-react'
+import { ArrowUpRight, X } from 'lucide-react'
 import { site } from '../../data/site'
+import { useI18n } from '../../i18n/LocaleProvider'
+import { localizePath } from '../../i18n'
+import LanguageSelector from './LanguageSelector'
 import { sectionIndex } from '../../data/navigation'
 import ThemeToggle from '../ui/ThemeToggle'
 import { scrollToSection } from '../../utils/scrollToSection'
@@ -46,6 +49,7 @@ function IndexCard({ href, onClick, index, label, featured = false }) {
 }
 
 export default function Navbar() {
+  const { locale, t } = useI18n()
   const [scrolled, setScrolled] = useState(false)
   const [progress, setProgress] = useState(0)
   const location = useLocation()
@@ -63,12 +67,17 @@ export default function Navbar() {
   const toggleRef = useRef(null)
   const panelRef = useRef(null)
 
-  const isProjectsPage = location.pathname === '/proyectos'
+  const isProjectsPage = location.pathname.endsWith('/proyectos')
+  const route = (path) => localizePath(path, locale)
+  const localizedSectionIndex = sectionIndex.map((section) => {
+    const sectionKeys = { inicio: 'home', experiencia: 'experience', servicios: 'capabilities', tecnologias: 'technologies', herramientas: 'tools', 'sobre-mi': 'aboutSection', contacto: 'contact' }
+    return { ...section, label: t(`nav.${sectionKeys[section.id] ?? section.id}`) }
+  })
 
   // En /proyectos el botón central mantiene su nombre pero lleva a la sección Experiencia
   const centralButton = isProjectsPage
-    ? { label: '¿Quién soy?', href: '/#experiencia' }
-    : { label: 'Proyectos', href: '/proyectos' }
+    ? { label: t('nav.about'), href: `${route('/')}#experiencia` }
+    : { label: t('nav.projects'), href: route('/proyectos') }
 
   useEffect(() => {
     let raf = 0
@@ -134,64 +143,36 @@ export default function Navbar() {
         )}
       >
         <nav
-          aria-label="Navegación principal"
-          className="mx-auto flex h-16 items-center justify-between gap-4 px-5 sm:px-6 md:h-20 lg:px-8"
+          aria-label={t('nav.main')}
+          className="mx-auto flex h-16 items-center justify-between gap-2 px-3 min-[380px]:gap-4 min-[380px]:px-5 sm:px-6 md:h-20 lg:px-8"
         >
           <Link
-            to="/"
+            to={route('/')}
             className="group inline-flex shrink-0 items-center gap-2.5 text-sm font-semibold tracking-tight text-text-primary transition-colors hover:text-accent md:text-base"
           >
             <span className="inline-block h-2.5 w-2.5 bg-accent" aria-hidden="true" />
             {site.name}
           </Link>
 
-          {/* Botón central contextual: Proyectos <-> Sobre mí.
-              En móvil se muestra versión compacta (icono), en md+ el botón con texto. */}
-          {centralButton.href.startsWith('/#') ? (
-            <>
-              <Link
-                to={centralButton.href}
-                aria-label={centralButton.label}
-                className="u-label inline-flex h-[46px] min-w-[46px] items-center justify-center border border-border px-3 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:hidden"
-              >
-                <User size={17} aria-hidden="true" />
-              </Link>
-              <Link
-                to={centralButton.href}
-                className="u-label hidden h-[46px] items-center border border-border px-4 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:inline-flex"
-              >
-                {centralButton.label}
-              </Link>
-            </>
-          ) : (
-            <>
-              <Link
-                to={centralButton.href}
-                aria-label={centralButton.label}
-                className="u-label inline-flex h-[46px] min-w-[46px] items-center justify-center border border-border px-3 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:hidden"
-              >
-                <FolderOpen size={17} aria-hidden="true" />
-              </Link>
-              <Link
-                to={centralButton.href}
-                className="u-label hidden h-[46px] items-center border border-border px-4 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:inline-flex"
-              >
-                {centralButton.label}
-              </Link>
-            </>
-          )}
+          {/* El acceso contextual se reserva a escritorio para que los controles
+              esenciales conserven espacio y alcance cómodo en móviles estrechos. */}
+          <Link
+            to={centralButton.href}
+            className="u-label hidden h-[46px] items-center border border-border px-4 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:inline-flex"
+          >
+            {centralButton.label}
+          </Link>
 
-          <div className="flex items-center gap-2.5">
-            <ThemeToggle />
+          <div className="flex items-center gap-1 min-[380px]:gap-2.5">
             <button
               ref={toggleRef}
               type="button"
               onClick={toggleOpen}
               aria-expanded={open}
               aria-controls="index-overlay"
-              aria-label={open ? 'Cerrar menú' : 'Abrir menú'}
+              aria-label={open ? t('nav.closeMenu') : t('nav.openMenu')}
               data-cursor="view"
-              className="u-label inline-flex h-[46px] min-h-0 min-w-[46px] items-center justify-center border border-border px-3 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary"
+              className="u-label inline-flex h-11 min-h-0 min-w-11 items-center justify-center border border-border px-2 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary sm:h-[46px] sm:min-w-[46px] sm:px-3"
             >
               <span
                 className="inline-flex flex-col gap-[4px]"
@@ -201,6 +182,8 @@ export default function Navbar() {
                 <span className={`block h-px w-5 bg-current transition-all duration-300 ${open ? '-rotate-45 -translate-y-[5px]' : ''}`} />
               </span>
             </button>
+            <LanguageSelector />
+            <ThemeToggle />
           </div>
         </nav>
 
@@ -223,33 +206,33 @@ export default function Navbar() {
         )}
         role="dialog"
         aria-modal="true"
-        aria-label="Índice del portfolio"
+        aria-label={t('nav.index')}
       >
         <div className="mx-auto flex w-full max-w-7xl flex-1 flex-col px-5 pt-20 sm:px-6 sm:pt-24 md:pt-28 lg:px-8">
-          <div className="mb-5 flex items-end justify-between gap-3 border-b border-border pb-4 sm:mb-8">
-            <div>
-              <p className="u-label text-accent">Navegación</p>
-              <p className="display mt-2 text-4xl text-text-primary md:text-5xl">Índice</p>
+          <div className="mb-5 flex items-end justify-between gap-2 border-b border-border pb-4 sm:mb-8">
+            <div className="min-w-0">
+              <p className="u-label text-accent">{t('nav.navigation')}</p>
+              <p className="display mt-2 text-[26px] text-text-primary min-[380px]:text-4xl md:text-5xl">{t('ui.index')}</p>
             </div>
             {/* En móvil no hay teclado: botón Cerrar visible. En escritorio, atajo ESC. */}
             <button
               type="button"
               onClick={close}
-              className="u-label inline-flex h-[46px] shrink-0 items-center gap-2 border border-border px-4 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:hidden"
+              className="u-label inline-flex h-[46px] shrink-0 items-center gap-2 border border-border px-2 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary min-[460px]:px-4 md:hidden"
             >
-              Cerrar
+              <span className="hidden min-[460px]:inline">{t('nav.close')}</span>
               <X size={16} aria-hidden="true" />
             </button>
-            <p className="u-label hidden text-text-muted md:block">ESC para cerrar</p>
+            <p className="u-label hidden text-text-muted md:block">{t('nav.escape')}</p>
           </div>
 
           <ol className="grid min-h-0 flex-1 auto-rows-min grid-cols-1 content-start gap-2.5 overflow-y-auto overscroll-contain sm:grid-cols-2 sm:gap-3 lg:grid-cols-3">
             {/* Secciones de la página actual */}
-            {sectionIndex.map((section, i) => (
+            {localizedSectionIndex.map((section, i) => (
               <li key={section.id}>
                 {isProjectsPage ? (
                   <IndexCard
-                    href={`/#${section.id}`}
+                    href={`${route('/')}#${section.id}`}
                     onClick={close}
                     index={String(i + 1).padStart(2, '0')}
                     label={section.label}
@@ -273,15 +256,13 @@ export default function Navbar() {
             {/* Botón de la otra página (solo en home; en /proyectos ya está Inicio como item 01) */}
             {!isProjectsPage && (
               <li>
-                <IndexCard href="/proyectos" onClick={close} index="→" label="Proyectos" featured />
+                <IndexCard href={route('/proyectos')} onClick={close} index="→" label={t('nav.projects')} featured />
               </li>
             )}
           </ol>
 
           <div className="flex flex-col gap-3 border-t border-border py-4 sm:flex-row sm:items-center sm:justify-between sm:py-6">
-            <p className="u-label text-text-muted">
-              {site.email} — {site.location}
-            </p>
+            <p className="u-label text-text-muted">{site.email} — {site.location}</p>
           </div>
         </div>
       </div>

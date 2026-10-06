@@ -1,15 +1,19 @@
 import { ArrowUpRight } from 'lucide-react'
 import { capabilities } from '../../data/skills'
 import SectionHeading from '../ui/SectionHeading'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 export default function Capabilities() {
+  const { t } = useI18n()
   return (
     <section className="py-24 md:py-36">
       <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8">
-        <SectionHeading index="03" title="Qué puedo construir" id="servicios" />
+        <SectionHeading index="03" title={t('sections.capabilities')} id="servicios" />
 
         <ol className="border-b border-border">
-          {capabilities.map((cap, i) => (
+          {capabilities.map((cap, i) => {
+            const translated = t(`data.capabilities.${i}`)
+            return (
             <li key={cap.title}>
               <a
                 href={`#${cap.experienceId}`}
@@ -23,17 +27,17 @@ export default function Capabilities() {
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <h3 className="text-xl font-semibold tracking-tight text-text-primary transition-colors group-hover:text-accent sm:col-span-4 md:text-2xl">
-                  {cap.title}
+                  {translated.title}
                 </h3>
                 <p className="max-w-lg leading-relaxed text-text-secondary sm:col-span-6">
-                  {cap.description}
+                  {translated.description}
                 </p>
                 <span className="justify-self-end text-text-muted transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-1 group-hover:text-accent sm:col-span-1">
                   <ArrowUpRight size={20} aria-hidden="true" />
                 </span>
               </a>
             </li>
-          ))}
+          )})}
         </ol>
       </div>
     </section>

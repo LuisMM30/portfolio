@@ -1,0 +1,363 @@
+{
+  "meta": {
+    "title": "Luis Montes de Oca | Webentwickler",
+    "description": "Webentwickler in Madrid. Portfolio mit Projekten aus Webentwicklung, E-Commerce und Anwendungsentwicklung."
+  },
+  "language": {
+    "label": "Sprache",
+    "es": "Español",
+    "en": "English",
+    "de": "Deutsch",
+    "gl": "Galego",
+    "pt": "Português",
+    "ca": "Català",
+    "fr": "Français"
+  },
+  "nav": {
+    "main": "Hauptnavigation",
+    "home": "Startseite",
+    "projects": "Projekte",
+    "contact": "Kontakt",
+    "about": "Über mich",
+    "aboutShort": "Über mich",
+    "closeMenu": "Menü schließen",
+    "openMenu": "Menü öffnen",
+    "index": "Portfolioverzeichnis",
+    "sections": "Abschnittsverzeichnis",
+    "navigation": "Navigation",
+    "close": "Schließen",
+    "escape": "ESC zum Schließen",
+    "experience": "Berufserfahrung",
+    "capabilities": "Was ich anbiete",
+    "technologies": "Technologien",
+    "tools": "Tools & KI",
+    "aboutSection": "Über mich"
+  },
+  "common": {
+    "online": "Online",
+    "privateProject": "Privates Projekt",
+    "preview": "Projektvorschau",
+    "visitWebsite": "Website besuchen",
+    "viewProject": "Projekt ansehen",
+    "copyUrl": "URL kopieren",
+    "copied": "Kopiert!",
+    "urlCopied": "URL kopiert",
+    "close": "Schließen",
+    "downloadCv": "Lebenslauf herunterladen",
+    "viewExperience": "Berufserfahrung ansehen",
+    "viewProjects": "Projekte ansehen",
+    "email": "E-Mail",
+    "linkedin": "LinkedIn",
+    "status": "Status",
+    "location": "Madrid",
+    "copyright": "© {{year}} — {{name}}",
+    "portfolioYear": "{{location}} — Portfolio {{year}}",
+    "error404": "Fehler 404",
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundBody": "Die gesuchte Seite existiert nicht oder wurde verschoben. Kehre zur Startseite zurück und entdecke das Portfolio weiter.",
+    "backHome": "Zur Startseite",
+    "photoAlt": "Foto von Luis Montes de Oca",
+    "projectPreviewAlt": "Vorschau von {{project}}",
+    "loadingContact": "Kontaktbereich wird geladen",
+    "legalInfo": "Rechtliche Informationen",
+    "backPortfolio": "Zurück zum Portfolio",
+    "lastUpdated": "Zuletzt aktualisiert: September 2026."
+  },
+  "hero": {
+    "role": "Junior Full-Stack-Webentwickler",
+    "base": "Standort",
+    "education": "Höherer Berufsabschluss in Webanwendungsentwicklung",
+    "available": "Offen für neue berufliche Möglichkeiten",
+    "availableProjects": "Verfügbar für Projekte",
+    "headline": "Junior-Webentwickler mit Erfahrung in realen E-Commerce-, Webentwicklungs- und Anwendungsprojekten. Ich arbeite mit Frontend, Backend, Datenbanken und verschiedenen Technologien, um Lösungen für konkrete Anforderungen zu entwickeln.",
+    "aboutCta": "Über mich",
+    "profileGroup": "Berufliches Profil",
+    "statusCommand": "$ status --available",
+    "portfolioRole": "Portfolio — {{role}}"
+  },
+  "sections": {
+    "experience": "Berufserfahrung",
+    "capabilities": "Was ich entwickeln kann",
+    "technologies": "Technologien, mit denen ich arbeite",
+    "tools": "Tools & KI",
+    "about": "Ich entwickle Webprodukte für konkrete Anforderungen.",
+    "projects": "Ausgewählte Projekte",
+    "projectsSubtitle": "Eine Auswahl meiner Projekte – von E-Commerce bis zu Webtools für Unternehmen.",
+    "contact": "Lassen Sie uns etwas entwickeln",
+    "education": "Ausbildung",
+    "aboutMe": "Über mich",
+    "stackDescription": "Technologiebeschreibung",
+    "readyTech": "System bereit. Wähle einen Radar-Knoten, um die Technologie zu beschreiben.",
+    "listedTools": "// {{count}} Tools aufgeführt · {{modules}} Module",
+    "toolkit": "toolkit — Arbeitsablauf",
+    "aiActive": "KI aktiv",
+    "toolCategories": "Tool-Kategorien",
+    "contactChannels": "Kontaktmöglichkeiten",
+    "curriculum": "Lebenslauf",
+    "curriculumDescription": "Detaillierte Angaben zu Berufserfahrung und Ausbildung als PDF.",
+    "sendMessage": "Nachricht senden",
+    "message": "Nachricht",
+    "name": "Name",
+    "emailLabel": "E-Mail",
+    "placeholderName": "Dein Name",
+    "placeholderEmail": "du@email.com",
+    "placeholderMessage": "Meine Idee ist …",
+    "downloadDetails": "Detaillierte Angaben zu Berufserfahrung und Ausbildung als PDF."
+  },
+  "form": {
+    "nameRequired": "Bitte gib deinen Namen ein.",
+    "emailInvalid": "Bitte gib eine gültige E-Mail-Adresse ein.",
+    "messageRequired": "Erzähl mir etwas mehr (mindestens 10 Zeichen).",
+    "sendError": "Fehler beim Senden",
+    "rejected": "Nachricht abgelehnt",
+    "sent": "Nachricht gesendet. Vielen Dank – ich melde mich so bald wie möglich.",
+    "mailtoReady": "Nachricht vorbereitet: Dein E-Mail-Programm wird zum Senden geöffnet.",
+    "failed": "Die Nachricht konnte nicht gesendet werden. Versuche es erneut oder schreib mir an {{email}}.",
+    "subject": "Portfolio-Kontaktanfrage — {{name}}",
+    "body": "Name: {{name}}\nE-Mail: {{email}}\nAnliegen: {{reason}}"
+  },
+  "projectModal": {
+    "context": "Hintergrund",
+    "project": "Das Projekt",
+    "projects": "Projekte",
+    "features": "Funktionen",
+    "technologies": "Technologien",
+    "goal": "Hauptziel",
+    "status": "Status",
+    "privateDesktop": "Nur für Desktop · nicht responsiv"
+  },
+  "footer": {
+    "contact": "Kontakt",
+    "navigation": "Navigation",
+    "documents": "Dokumente",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutz",
+    "legalNotice": "Impressum"
+  },
+  "legal": {
+    "noticeTitle": "Impressum",
+    "noticeIntro": "Allgemeine Informationen zu dieser Website und ihrem Verantwortlichen.",
+    "privacyTitle": "Datenschutzerklärung",
+    "privacyIntro": "So werden personenbezogene Daten verarbeitet, wenn du diese Website kontaktierst.",
+    "siteOwner": "Websiteinhaber",
+    "contactData": "Kontaktdaten",
+    "object": "Zweck",
+    "intellectualProperty": "Geistiges Eigentum",
+    "responsibility": "Haftung",
+    "responsible": "Verantwortlicher",
+    "processedData": "Verarbeitete Daten",
+    "purpose": "Zweck und Rechtsgrundlage",
+    "retention": "Speicherdauer",
+    "recipientsRights": "Empfänger und Rechte",
+    "security": "Sicherheit"
+  },
+  "copy": {
+    "experience": {
+      "freelanceWebDeveloper": "Freiberuflicher Webentwickler",
+      "webDeveloper": "Webentwickler",
+      "trainee": "Webentwickler im Praktikum",
+      "realClients": "Reale Kunden",
+      "webDevelopment": "Webentwicklung",
+      "professionalProject3Months": "Berufliches Projekt · 3 Monate",
+      "clientWebsites": "Websites für Kunden",
+      "dualInternship": "Praktikum · duale Berufsausbildung",
+      "june": "Juni",
+      "july": "Juli",
+      "march": "März",
+      "october": "Oktober",
+      "february": "Februar",
+      "september": "September"
+    },
+    "projectHints": {
+      "nonResponsive": "Das einzige nicht responsive Projekt auf dieser Seite; nur für Desktop konzipiert."
+    },
+    "about": {
+      "paragraph1": "Ich bin Junior-Full-Stack-Entwickler und lerne am liebsten durch praktische Arbeit. In den vergangenen Jahren habe ich an realen Web-, E-Commerce- und von Grund auf entwickelten Anwendungsprojekten gearbeitet.",
+      "paragraph2": "Ich habe mit HTML, CSS, JavaScript, React, PHP, MongoDB und MySQL sowie mit Tools und Plattformen wie WordPress, PrestaShop und WooCommerce gearbeitet.",
+      "paragraph3": "Meine Erfahrung umfasst verschiedene Bereiche der Entwicklung: vom Erstellen von Benutzeroberflächen und Funktionen bis zur Arbeit mit Datenbanken und der Kommunikation zwischen Anwendungsteilen.",
+      "paragraph4": "Ich behaupte nicht, alles zu wissen. Ich löse gern neue Probleme, recherchiere, probiere verschiedene Ansätze aus und lerne dabei. KI unterstützt meinen Arbeitsablauf beim Lernen, Recherchieren und Entwickeln; dabei überprüfe und verstehe ich stets meine Arbeit.",
+      "paragraph5": "Ich möchte mich als Entwickler weiterentwickeln, besonders in Full-Stack-Entwicklung, React, Backend, APIs, Datenbanken und Anwendungsentwicklung, und bei realen Projekten zunehmend Verantwortung übernehmen.",
+      "paragraph6": "Ich bringe vor allem Neugier, Lernbereitschaft, Engagement und den Anspruch mit, gute Arbeit zu leisten.",
+      "skillsCommand": "./skills --list",
+      "readyCommand": "$ ready_to_build"
+    }
+  },
+  "data": {
+    "experience": [
+      {
+        "role": "Freiberuflicher Webentwickler",
+        "org": "Reale Kunden",
+        "kind": "Webentwicklung",
+        "summary": "Ich entwickle Websites für echte Kunden. Zuerst kläre ich Ziele, Struktur und passende Lösung. Nach der Planung setze ich das Projekt mit gezielten Prompts und KI-Werkzeugen effizient um – ohne technisches Urteilsvermögen, Prüfung oder individuelle Anpassung zu ersetzen."
+      },
+      {
+        "role": "Webentwickler",
+        "org": "AwakeBlab",
+        "kind": "Berufliches Projekt · 3 Monate",
+        "summary": "Ich entwickelte von Grund auf eine Webplattform zur Auftragsverwaltung. Dabei arbeitete ich am React-Frontend, der MongoDB-Datenbank und dem GitHub-Repository. Claude, GitHub Copilot und Codex unterstützten die Entwicklung; außerdem arbeitete ich mit VS Code und absolvierte Schulungen auf Moodle."
+      },
+      {
+        "role": "Freiberuflicher Webentwickler",
+        "org": "Zusammenarbeit mit einem Selbstständigen",
+        "kind": "Websites für reale Kunden",
+        "summary": "Ich wirkte an Websites für reale Kunden mit und übernahm die volle Verantwortung für das fertige Produkt. Ich entwickelte Lösungen mit WordPress und ergänzenden Technologien, verwaltete Daten in Excel und lieferte die Projekte direkt nach den konkreten Anforderungen der Kunden aus."
+      },
+      {
+        "role": "Webentwickler im Praktikum",
+        "org": "LaPrimeraWeb",
+        "kind": "Praktikum · duale Berufsausbildung",
+        "summary": "Im Rahmen meiner höheren Berufsausbildung absolvierte ich ein neunmonatiges Praktikum bei LaPrimeraWeb. Ich arbeitete an Webentwicklung, digitalem Design, Unternehmensanalysen und Kundenakquise und stellte Dienstleistungen direkt bei lokalen Geschäften vor. Dabei sammelte ich Erfahrung mit HTML5, CSS3, JavaScript, WordPress und PrestaShop, gestaltete Logos und Grafiken mit Canva, FlexClip und DALL·E, pflegte umfangreiche Excel-Datenbanken, erstellte GPT-Agenten mit ChatGPT und DeepSeek und automatisierte Social Media mit Make."
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "Full-Stack-Webentwicklung",
+        "description": "Moderne Benutzeroberflächen, Anwendungen und Weblösungen für konkrete Anforderungen."
+      },
+      {
+        "title": "E-Commerce und Unternehmenswebsites",
+        "description": "Onlineshops und Websites für reale Kunden mit verschiedenen Webtechnologien."
+      },
+      {
+        "title": "Unternehmensanalyse und Kundenakquise",
+        "description": "Analyse und Prüfung von Unternehmen, direkter Austausch mit Geschäften sowie Kundenakquise, um Dienstleistungen vorzustellen und Bedürfnisse zu verstehen."
+      },
+      {
+        "title": "KI in der Entwicklung",
+        "description": "KI-Werkzeuge zum Recherchieren, Planen, Entwickeln und Prüfen von Webprodukten."
+      },
+      {
+        "title": "Lokales SEO und responsives Design",
+        "description": "Lokale Suchmaschinenoptimierung für mehr digitale Sichtbarkeit und Web-Erlebnisse für verschiedene Geräte."
+      }
+    ],
+    "aptitudes": [
+      "Kontinuierliches Lernen",
+      "Anpassung an neue Technologien",
+      "Problemlösung",
+      "Full-Stack-Entwicklung",
+      "Blick fürs Detail",
+      "Ständige Verbesserung"
+    ],
+    "skillCategories": [
+      "Frontend",
+      "Stile und Animation",
+      "Status und Daten",
+      "Backend",
+      "Qualität und Auslieferung"
+    ],
+    "tools": [
+      "Entwicklungsumgebung",
+      "Programmierassistenten",
+      "Lokale Modelle und Agenten",
+      "Datenbanken",
+      "Plattformen und CMS",
+      "Versionsverwaltung und Deployment",
+      "Design und Inhalte",
+      "Automatisierung"
+    ],
+    "education": [
+      {
+        "title": "Höherer Berufsabschluss in Webanwendungsentwicklung",
+        "subtitle": "Duale Ausbildung",
+        "description": "Theoretische und praktische Ausbildung in der Webentwicklung, ergänzt durch etwa ein Jahr praktischer Arbeit in einem realen Unternehmen. Das duale Modell ermöglichte mir, Wissen in professionellen Projekten anzuwenden, Teamprozesse kennenzulernen und schon während des Studiums Berufserfahrung zu sammeln.",
+        "period": "September 2023 — Juni 2025"
+      },
+      {
+        "title": "Wissenschaftlich-technisches Abitur",
+        "subtitle": "",
+        "description": "Ausbildung mit Schwerpunkt auf logischem Denken, Mathematik, Problemlösung sowie wissenschaftlichen und technischen Grundlagen. Diese Zeit stärkte meine analytischen Fähigkeiten und bereitete mich auf die Spezialisierung in der Webanwendungsentwicklung vor.",
+        "period": "September 2020 — Juni 2023"
+      }
+    ],
+    "languageLevels": [
+      {
+        "language": "Spanisch",
+        "level": "Muttersprache"
+      },
+      {
+        "language": "Englisch",
+        "level": "B2.2"
+      }
+    ],"educationPeriods":["September 2023 — Juni 2025","September 2020 — Juni 2023"],"skillGroups":[{"name":"HTML5","description":"Mit HTML strukturiere ich Webinhalte semantisch korrekt, mit klarer Überschriftenhierarchie und barrierefreien Formularen – als solide Grundlage für Design und SEO."},{"name":"CSS3","description":"Die visuelle Ebene meiner Projekte: Layouts mit Flexbox und Grid, responsives Design ohne Frameworks, leichte Animationen sowie konsistente Variablen und Themes."},{"name":"JavaScript","description":"Meine tägliche Sprache im Browser und mit Node.js auf dem Server. Damit entwickle ich Interface-Logik, nutze APIs und löse konkrete Projektaufgaben."},{"name":"TypeScript","description":"Typisiertes JavaScript, mit dem ich Fehler früh erkenne, Datenstrukturen dokumentiere und professionelle Projekte sicher refaktoriere."},{"name":"React","description":"Meine wichtigste Bibliothek für Oberflächen mit wiederverwendbaren Komponenten, Hooks und Zustandsverwaltung. Ich habe sie in realen Verwaltungstools und vollständigen Kundenwebsites eingesetzt."},{"name":"Next.js","description":"Das React-Framework für Projekte, bei denen Auffindbarkeit und Performance zählen: hybrides Rendering, lokalisierte Routen, Metadaten und Cloudflare-Deployment mit OpenNext."},{"name":"Angular","description":"Ein vollständiges Framework für große SPAs mit Dependency Injection, Routing und klarer Architektur für skalierbare Teamarbeit."},{"name":"A11y (WCAG)","description":"Ich berücksichtige Barrierefreiheit durch semantisches HTML, vollständige Tastaturnavigation, sichtbaren Fokus, ausreichende Kontraste und Screenreader-Kompatibilität."},{"name":"Tailwind CSS","description":"Mein bevorzugtes Styling-Framework: Utility-Klassen beschleunigen die Entwicklung und sorgen für konsistente Oberflächen mit eigenen Themes, Dark Mode und responsivem Design."},{"name":"Framer Motion","description":"Eine Animationsbibliothek für React, die ich für View-Übergänge, Scroll-Reveals, Gesten und dezente Mikrointeraktionen nutze."},{"name":"React Query","description":"Verwaltung von Server-State mit automatischem Cache, Hintergrundaktualisierung und Datensynchronisierung – besonders nützlich für API-Anwendungen."},{"name":"Zustand","description":"Ein schlanker globaler Store für Client-State, wenn viele Komponenten Daten teilen müssen, ohne unnötigen Boilerplate-Aufwand."},{"name":"React Hook Form","description":"Meine Standardlösung für Formulare: schnell, mit integrierter Validierung und ideal in Kombination mit Zod für komplexe Kontakt- und Bestellformulare."},{"name":"Zod","description":"Gemeinsame Schema-Validierung mit TypeScript für Client und Server, damit Browserformulare und API-Daten konsistent bleiben."},{"name":"Node.js","description":"Die Laufzeitumgebung für REST-APIs, Initialisierungsskripte, Automatisierung und Tools – JavaScript für den gesamten Stack."},{"name":"Express","description":"Ein Node.js-Serverframework für REST-APIs mit Authentifizierungs- und Validierungs-Middleware sowie übersichtlich organisierten Routen."},{"name":"Nodemailer","description":"Backend-Versand transaktionaler E-Mails für Bestellbenachrichtigungen, Workflow-Hinweise und Bestätigungen mit Vorlagen, Warteschlangen und Protokollen."},{"name":"JWT","description":"Zustandslose Authentifizierung mit signierten Tokens. Zusammen mit bcryptjs ermöglicht sie sichere Sitzungen und rollenbasierte Berechtigungen."},{"name":"Vite","description":"Mein Frontend-Entwicklungs- und Build-Tool: schneller Dev-Server, sofortiges Hot Reload und optimierte Produktions-Builds."},{"name":"Vitest","description":"Schnelle Unit-Tests für Geschäftslogik, Hilfsfunktionen und wichtige Komponenten im Vite-Workflow."},{"name":"Playwright","description":"End-to-End-Tests vollständiger Nutzerabläufe in mehreren Browsern – für mehr Sicherheit vor dem Deployment."},{"name":"ESLint","description":"Statische Codeanalyse, die Fehler früh erkennt, den Stil vereinheitlicht und Projekte sauber und wartbar hält."},{"name":"Git","description":"Versionsverwaltung mit Feature-Branches, nachvollziehbaren Commits und Code-Reviews in Einzel- und Teamprojekten."}]
+  },
+  "ui": {
+    "index": "Inhaltsverzeichnis",
+    "role": "Rolle",
+    "training": "Ausbildung",
+    "language": "Sprache",
+    "toolsCategories": "Tool-Kategorien",
+    "education": "Ausbildung",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "name": "Name",
+    "send": "Nachricht senden",
+    "cv": "Lebenslauf",
+    "cvDetails": "Detaillierte Angaben zu Berufserfahrung und Ausbildung als PDF.",
+    "availableProjects": "Für Projekte verfügbar",
+    "roleLabel": "Rolle",
+    "theme": "Darstellung",
+    "copyUrl": "URL kopieren",
+    "copied": "Kopiert!",
+    "urlCopied": "URL kopiert",
+    "changeToLight": "Zum hellen Modus wechseln",
+    "changeToDark": "Zum dunklen Modus wechseln",
+    "contactChannels": "Kontaktmöglichkeiten",
+    "privateDesktop": "Nur für Desktop · nicht responsiv",
+    "context": "Hintergrund",
+    "project": "Das Projekt",
+    "features": "Funktionen",
+    "technologies": "Technologien",
+    "goal": "Hauptziel",
+    "visitWebsite": "Website besuchen",
+    "close": "Schließen",
+    "legalInfo": "Rechtliche Informationen",
+    "lastUpdated": "Zuletzt aktualisiert: September 2026.",
+    "backPortfolio": "Zurück zum Portfolio",
+    "legalNotice": "Impressum",
+    "privacy": "Datenschutz",
+    "navigation": "Navigation",
+    "documents": "Dokumente",
+    "contact": "Kontakt",
+    "downloadCv": "Lebenslauf herunterladen",
+    "tools": "Tools & KI",
+    "toolkit": "toolkit — Arbeitsablauf",
+    "aiActive": "KI aktiv",
+    "readyTech": "System bereit. Wähle einen Radar-Knoten, um die Technologie zu beschreiben.",
+    "techDescription": "Technologiebeschreibung",
+    "errorSend": "Fehler beim Senden",
+    "rejected": "Nachricht abgelehnt",
+    "notFoundTitle": "Seite nicht gefunden",
+    "notFoundBody": "Die gesuchte Seite existiert nicht oder wurde verschoben. Kehre zur Startseite zurück und entdecke das Portfolio weiter.",
+    "backHome": "Zur Startseite",
+    "photoAlt": "Foto von Luis Montes de Oca",
+    "projectPreviewAlt": "Vorschau von {{project}}",
+    "themeLight": "Zum hellen Modus wechseln",
+    "themeDark": "Zum dunklen Modus wechseln",
+    "projectsSelected": "Ausgewählte Projekte",
+    "projectSummary": "Eine Auswahl meiner Projekte – von E-Commerce bis zu Webtools für Unternehmen.",
+    "buildSomething": "Lassen Sie uns etwas entwickeln",
+    "aboutTitle": "Ich entwickle Webprodukte für konkrete Anforderungen.",
+    "about": "Über mich",
+    "state": "Status",
+    "toolCategories": "Tool-Kategorien",
+    "languages": "Sprachen",
+    "yourName": "Dein Name",
+    "emailPlaceholder": "du@email.com",
+    "messagePlaceholder": "Meine Idee ist …",
+    "profile": "Berufliches Profil",
+    "indexSections": "Abschnittsverzeichnis",
+    "nonResponsive": "Das einzige nicht responsive Projekt auf dieser Seite; nur für Desktop konzipiert.",
+    "skillsCommand": "./skills --list",
+    "readyCommand": "$ ready_to_build",
+    "loadingContact": "Kontaktbereich wird geladen",
+    "requiredName": "Bitte gib deinen Namen ein.",
+    "invalidEmail": "Bitte gib eine gültige E-Mail-Adresse ein.",
+    "requiredMessage": "Erzähl mir etwas mehr (mindestens 10 Zeichen).",
+    "success": "Nachricht gesendet. Vielen Dank – ich melde mich so bald wie möglich.",
+    "mailtoReady": "Nachricht vorbereitet: Dein E-Mail-Programm wird zum Senden geöffnet.",
+    "sendFailed": "Die Nachricht konnte nicht gesendet werden. Versuche es erneut oder schreib mir an {{email}}.",
+    "mailtoSubject": "Portfolio-Kontaktanfrage — {{name}}",
+    "mailtoBody": "Name: {{name}}\nE-Mail: {{email}}\nAnliegen: {{reason}}"
+  }
+}

@@ -1,0 +1,363 @@
+{
+  "meta": {
+    "title": "Luis Montes de Oca | Desenvolupador web",
+    "description": "Desenvolupador web a Madrid. Portafolis de projectes de desenvolupament web, comerç electrònic i aplicacions."
+  },
+  "language": {
+    "label": "Llengua",
+    "es": "Español",
+    "en": "English",
+    "de": "Deutsch",
+    "gl": "Galego",
+    "pt": "Português",
+    "ca": "Català",
+    "fr": "Français"
+  },
+  "nav": {
+    "main": "Navegació principal",
+    "home": "Inici",
+    "projects": "Projectes",
+    "contact": "Contacte",
+    "about": "Qui soc?",
+    "aboutShort": "Sobre mi",
+    "closeMenu": "Tanca el menú",
+    "openMenu": "Obre el menú",
+    "index": "Índex del portafolis",
+    "sections": "Índex de seccions",
+    "navigation": "Navegació",
+    "close": "Tanca",
+    "escape": "ESC per tancar",
+    "experience": "Experiència",
+    "capabilities": "Què puc fer",
+    "technologies": "Tecnologies",
+    "tools": "Eines i IA",
+    "aboutSection": "Sobre mi"
+  },
+  "common": {
+    "online": "En línia",
+    "privateProject": "Projecte privat",
+    "preview": "Previsualització del projecte",
+    "visitWebsite": "Visita el web",
+    "viewProject": "Veure el projecte",
+    "copyUrl": "Copia l’URL",
+    "copied": "Copiat!",
+    "urlCopied": "URL copiada",
+    "close": "Tanca",
+    "downloadCv": "Descarrega el CV",
+    "viewExperience": "Veure l’experiència",
+    "viewProjects": "Veure els projectes",
+    "email": "Correu electrònic",
+    "linkedin": "LinkedIn",
+    "status": "Estat",
+    "location": "Madrid",
+    "copyright": "© {{year}} — {{name}}",
+    "portfolioYear": "{{location}} — Portafolis {{year}}",
+    "error404": "Error 404",
+    "notFoundTitle": "No s’ha trobat la pàgina",
+    "notFoundBody": "La pàgina que busques no existeix o s’ha mogut. Torna a l’inici per continuar explorant el portafolis.",
+    "backHome": "Torna a l’inici",
+    "photoAlt": "Fotografia de Luis Montes de Oca",
+    "projectPreviewAlt": "Previsualització de {{project}}",
+    "loadingContact": "S’està carregant la secció de contacte",
+    "legalInfo": "Informació legal",
+    "backPortfolio": "Torna al portafolis",
+    "lastUpdated": "Darrera actualització: setembre de 2026."
+  },
+  "hero": {
+    "role": "Desenvolupador web full stack júnior",
+    "base": "Ubicació",
+    "education": "Cicle formatiu de grau superior en Desenvolupament d’Aplicacions Web",
+    "available": "Disponible per a noves oportunitats",
+    "availableProjects": "Disponible per a projectes",
+    "headline": "Desenvolupador web júnior amb experiència en projectes reals de comerç electrònic, desenvolupament web i aplicacions. Treballo en frontend, backend, bases de dades i diverses tecnologies per crear solucions que responguin a necessitats concretes.",
+    "aboutCta": "Sobre mi",
+    "profileGroup": "Informació professional",
+    "statusCommand": "$ status --available",
+    "portfolioRole": "Portafolis — {{role}}"
+  },
+  "sections": {
+    "experience": "Experiència",
+    "capabilities": "Què puc crear",
+    "technologies": "Tecnologies amb què treballo",
+    "tools": "Eines i IA",
+    "about": "Creo productes web per a necessitats reals.",
+    "projects": "Projectes destacats",
+    "projectsSubtitle": "Una selecció de projectes en què he treballat, des del comerç electrònic fins a eines web per a empreses.",
+    "contact": "Creem alguna cosa",
+    "education": "Formació",
+    "aboutMe": "Sobre mi",
+    "stackDescription": "Descripció de la tecnologia",
+    "readyTech": "Sistema a punt. Activa un node del radar per veure’n la descripció tecnològica.",
+    "listedTools": "// {{count}} eines llistades · {{modules}} mòduls",
+    "toolkit": "joc d’eines — flux de treball",
+    "aiActive": "IA activa",
+    "toolCategories": "Categories d’eines",
+    "contactChannels": "Canals de contacte",
+    "curriculum": "Currículum",
+    "curriculumDescription": "Experiència i formació detallades en PDF.",
+    "sendMessage": "Envia el missatge",
+    "message": "Missatge",
+    "name": "Nom",
+    "emailLabel": "Correu electrònic",
+    "placeholderName": "El teu nom",
+    "placeholderEmail": "tu@correu.com",
+    "placeholderMessage": "La meva idea és...",
+    "downloadDetails": "Experiència i formació detallades en PDF."
+  },
+  "form": {
+    "nameRequired": "Indica el teu nom.",
+    "emailInvalid": "Introdueix una adreça electrònica vàlida.",
+    "messageRequired": "Explica’m una mica més (com a mínim 10 caràcters).",
+    "sendError": "No s’ha pogut enviar",
+    "rejected": "Enviament rebutjat",
+    "sent": "Missatge enviat. Gràcies; et respondré tan aviat com pugui.",
+    "mailtoReady": "Missatge preparat: s’obrirà el teu programa de correu per enviar-lo.",
+    "failed": "No s’ha pogut enviar el missatge. Torna-ho a provar o escriu-me a {{email}}.",
+    "subject": "Contacte des del portafolis — {{name}}",
+    "body": "Nom: {{name}}\nCorreu electrònic: {{email}}\nMotiu: {{reason}}"
+  },
+  "projectModal": {
+    "context": "Context",
+    "project": "El projecte",
+    "projects": "Projectes",
+    "features": "Funcionalitats",
+    "technologies": "Tecnologies",
+    "goal": "Objectiu principal",
+    "status": "Estat",
+    "privateDesktop": "Només per a ordinadors · no adaptable"
+  },
+  "footer": {
+    "contact": "Contacte",
+    "navigation": "Navegació",
+    "documents": "Documents",
+    "legal": "Legal",
+    "privacy": "Privadesa",
+    "legalNotice": "Avís legal"
+  },
+  "legal": {
+    "noticeTitle": "Avís legal",
+    "noticeIntro": "Informació general del lloc web i de la persona responsable.",
+    "privacyTitle": "Política de privadesa",
+    "privacyIntro": "Com es tracten les dades personals quan contactes amb aquest lloc.",
+    "siteOwner": "Titular del lloc",
+    "contactData": "Dades de contacte",
+    "object": "Objecte",
+    "intellectualProperty": "Propietat intel·lectual",
+    "responsibility": "Responsabilitat",
+    "responsible": "Responsable del tractament",
+    "processedData": "Dades tractades",
+    "purpose": "Finalitat i base jurídica",
+    "retention": "Conservació",
+    "recipientsRights": "Destinataris i drets",
+    "security": "Seguretat"
+  },
+  "copy": {
+    "experience": {
+      "freelanceWebDeveloper": "Desenvolupador web freelance",
+      "webDeveloper": "Desenvolupador web",
+      "trainee": "Desenvolupador web en pràctiques",
+      "realClients": "Clients reals",
+      "webDevelopment": "Desenvolupament web",
+      "professionalProject3Months": "Projecte professional · 3 mesos",
+      "clientWebsites": "Webs per a clients reals",
+      "dualInternship": "Pràctiques · cicle superior dual",
+      "june": "Juny",
+      "july": "Juliol",
+      "march": "Març",
+      "october": "Octubre",
+      "february": "Febrer",
+      "september": "Setembre"
+    },
+    "projectHints": {
+      "nonResponsive": "L’únic projecte d’aquesta pàgina que no és adaptable: preparat només per a ordinadors."
+    },
+    "about": {
+      "paragraph1": "Soc desenvolupador full stack júnior i m’agrada aprendre creant. Durant els darrers anys he treballat en projectes reals de pàgines web, comerç electrònic i aplicacions desenvolupades des de zero.",
+      "paragraph2": "He treballat amb tecnologies com HTML, CSS, JavaScript, React, PHP, MongoDB i MySQL, a més d’eines i plataformes com WordPress, PrestaShop i WooCommerce.",
+      "paragraph3": "La meva experiència m’ha permès conèixer diferents àrees del desenvolupament: des de crear interfícies i funcionalitats fins a treballar amb dades, bases de dades i la comunicació entre les parts d’una aplicació.",
+      "paragraph4": "No pretenc saber-ho tot. M’agrada afrontar problemes que encara no sé resoldre, investigar, provar opcions diferents i aprendre durant el procés. La intel·ligència artificial forma part de la meva manera de treballar i m’ajuda a aprendre, investigar i desenvolupar amb més eficiència; sempre reviso i entenc el que faig.",
+      "paragraph5": "Vull continuar creixent com a desenvolupador, especialment en full stack, React, backend, APIs, bases de dades i desenvolupament d’aplicacions, participant en projectes reals i assumint cada vegada més responsabilitats.",
+      "paragraph6": "Crec que puc aportar sobretot curiositat, capacitat d’aprenentatge, implicació i ganes de fer bé les coses.",
+      "skillsCommand": "./skills --list",
+      "readyCommand": "$ ready_to_build"
+    }
+  },
+  "ui": {
+    "language": "Llengua",
+    "toolsCategories": "Categories d’eines",
+    "education": "Formació",
+    "email": "Correu electrònic",
+    "message": "Missatge",
+    "name": "Nom",
+    "send": "Envia el missatge",
+    "cv": "Currículum",
+    "cvDetails": "Experiència i formació detallades en PDF.",
+    "availableProjects": "Disponible per a projectes",
+    "roleLabel": "Rol",
+    "theme": "Tema",
+    "copyUrl": "Copia l’URL",
+    "copied": "Copiat!",
+    "urlCopied": "URL copiada",
+    "changeToLight": "Canvia al mode clar",
+    "changeToDark": "Canvia al mode fosc",
+    "contactChannels": "Canals de contacte",
+    "privateDesktop": "Només per a ordinadors · no adaptable",
+    "context": "Context",
+    "project": "El projecte",
+    "features": "Funcionalitats",
+    "technologies": "Tecnologies",
+    "goal": "Objectiu principal",
+    "visitWebsite": "Visita el web",
+    "close": "Tanca",
+    "legalInfo": "Informació legal",
+    "lastUpdated": "Darrera actualització: setembre de 2026.",
+    "backPortfolio": "Torna al portafolis",
+    "legalNotice": "Avís legal",
+    "privacy": "Privadesa",
+    "navigation": "Navegació",
+    "documents": "Documents",
+    "contact": "Contacte",
+    "downloadCv": "Descarrega el CV",
+    "tools": "Eines i IA",
+    "toolkit": "joc d’eines — flux de treball",
+    "aiActive": "IA activa",
+    "readyTech": "Sistema a punt. Activa un node del radar per veure’n la descripció tecnològica.",
+    "techDescription": "Descripció de la tecnologia",
+    "errorSend": "No s’ha pogut enviar",
+    "rejected": "Enviament rebutjat",
+    "notFoundTitle": "No s’ha trobat la pàgina",
+    "notFoundBody": "La pàgina que busques no existeix o s’ha mogut. Torna a l’inici per continuar explorant el portafolis.",
+    "backHome": "Torna a l’inici",
+    "photoAlt": "Fotografia de Luis Montes de Oca",
+    "projectPreviewAlt": "Previsualització de {{project}}",
+    "index": "Índex",
+    "role": "Rol",
+    "training": "Formació",
+    "toolCategories": "Categories d’eines",
+    "themeLight": "Canvia al mode clar",
+    "themeDark": "Canvia al mode fosc",
+    "projectsSelected": "Projectes destacats",
+    "projectSummary": "Una selecció de projectes en què he treballat, des del comerç electrònic fins a eines web per a empreses.",
+    "buildSomething": "Creem alguna cosa",
+    "aboutTitle": "Creo productes web per a necessitats reals.",
+    "about": "Sobre mi",
+    "state": "Estat",
+    "languages": "Idiomes",
+    "yourName": "El teu nom",
+    "emailPlaceholder": "tu@correu.com",
+    "messagePlaceholder": "La meva idea és...",
+    "profile": "Informació professional",
+    "indexSections": "Índex de seccions",
+    "nonResponsive": "L’únic projecte d’aquesta pàgina que no és adaptable: preparat només per a ordinadors.",
+    "skillsCommand": "./skills --list",
+    "readyCommand": "$ ready_to_build",
+    "loadingContact": "S’està carregant la secció de contacte",
+    "requiredName": "Indica el teu nom.",
+    "invalidEmail": "Introdueix una adreça electrònica vàlida.",
+    "requiredMessage": "Explica’m una mica més (com a mínim 10 caràcters).",
+    "success": "Missatge enviat. Gràcies; et respondré tan aviat com pugui.",
+    "mailtoReady": "Missatge preparat: s’obrirà el teu programa de correu per enviar-lo.",
+    "sendFailed": "No s’ha pogut enviar el missatge. Torna-ho a provar o escriu-me a {{email}}.",
+    "mailtoSubject": "Contacte des del portafolis — {{name}}",
+    "mailtoBody": "Nom: {{name}}\nCorreu electrònic: {{email}}\nMotiu: {{reason}}"
+  },
+  "data": {
+    "experience": [
+      {
+        "role": "Desenvolupador web freelance",
+        "org": "Clients reals",
+        "kind": "Desenvolupament web",
+        "summary": "Creo webs per a clients reals començant per entendre’n els objectius, definir l’estructura i plantejar la solució. Un cop planificat el projecte, desenvolupo el web amb prompts adequats i eines d’IA per avançar amb agilitat sense substituir el criteri tècnic, la revisió ni la personalització del resultat."
+      },
+      {
+        "role": "Desenvolupador web",
+        "org": "AwakeBlab",
+        "kind": "Projecte professional · 3 mesos",
+        "summary": "Vaig desenvolupar des de zero una plataforma web de gestió de comandes. Vaig treballar en el frontend amb React, la base de dades MongoDB i el repositori de GitHub. Vaig fer servir Claude, GitHub Copilot i Codex com a eines de desenvolupament, vaig treballar amb VS Code i vaig completar formació a Moodle."
+      },
+      {
+        "role": "Desenvolupador web freelance",
+        "org": "Col·laboració amb un professional autònom",
+        "kind": "Webs per a clients reals",
+        "summary": "Vaig participar en la creació de webs per a clients reals i vaig assumir tota la responsabilitat del producte final. Vaig desenvolupar solucions amb WordPress i tecnologies complementàries, vaig gestionar dades amb Excel i vaig lliurar directament els projectes segons els requisits concrets de cada client."
+      },
+      {
+        "role": "Desenvolupador web en pràctiques",
+        "org": "LaPrimeraWeb",
+        "kind": "Pràctiques · cicle superior dual",
+        "summary": "Vaig fer nou mesos de pràctiques a LaPrimeraWeb com a part del cicle superior. Vaig participar en desenvolupament web, disseny digital, auditoria de negocis i captació de clients, visitant comerços per presentar serveis. Vaig treballar en anàlisi empresarial, creació de webs amb HTML5, CSS3, JavaScript, WordPress i PrestaShop, disseny de logotips i recursos visuals amb Canva, FlexClip i DALL·E, gestió de bases de dades amb Excel, creació d’agents GPT amb ChatGPT i DeepSeek, i automatització de xarxes socials amb Make."
+      }
+    ],
+    "capabilities": [
+      {
+        "title": "Desenvolupament web full stack",
+        "description": "Creació d’interfícies, aplicacions i solucions web modernes per a necessitats reals."
+      },
+      {
+        "title": "Comerç electrònic i webs per a negocis",
+        "description": "Desenvolupament de botigues en línia i webs per a clients reals amb diferents tecnologies web."
+      },
+      {
+        "title": "Auditoria de negocis i captació",
+        "description": "Anàlisi i auditoria de negocis, contacte directe amb comerços i captació de clients per presentar serveis i entendre’n les necessitats."
+      },
+      {
+        "title": "IA aplicada al desenvolupament",
+        "description": "Ús d’eines d’IA per investigar, planificar, crear i revisar productes web."
+      },
+      {
+        "title": "SEO local i disseny adaptable",
+        "description": "Posicionament SEO local per millorar la presència digital i creació d’experiències web adaptades a diversos dispositius."
+      }
+    ],
+    "aptitudes": [
+      "Aprenentatge continu",
+      "Adaptació a les noves tecnologies",
+      "Resolució de problemes",
+      "Desenvolupament full stack",
+      "Atenció als detalls",
+      "Millora contínua"
+    ],
+    "skillCategories": [
+      "Frontend",
+      "Estils i animació",
+      "Estat i dades",
+      "Backend",
+      "Qualitat i lliurament"
+    ],
+    "tools": [
+      "Entorn de desenvolupament",
+      "Assistents de programació",
+      "Models locals i agents",
+      "Bases de dades",
+      "Plataformes i CMS",
+      "Control de versions i desplegament",
+      "Disseny i contingut",
+      "Automatització"
+    ],
+    "education": [
+      {
+        "title": "Cicle formatiu de grau superior en Desenvolupament d’Aplicacions Web",
+        "subtitle": "Modalitat dual",
+        "description": "Formació teòrica i pràctica en desenvolupament web, complementada amb aproximadament un any de feina en una empresa real. La modalitat dual permet aplicar els coneixements a projectes professionals, conèixer processos de treball en equip i adquirir experiència abans d’acabar els estudis.",
+        "period": "Setembre 2023 — Juny 2025"
+      },
+      {
+        "title": "Batxillerat científic i tecnològic",
+        "subtitle": "",
+        "description": "Formació centrada en el raonament lògic, les matemàtiques, la resolució de problemes i les bases científiques i tecnològiques. Aquesta etapa va reforçar la meva capacitat analítica i em va preparar per continuar estudis especialitzats en desenvolupament d’aplicacions web.",
+        "period": "Setembre 2020 — Juny 2023"
+      }
+    ],
+    "languageLevels": [
+      {
+        "language": "Castellà",
+        "level": "Nadiu"
+      },
+      {
+        "language": "Anglès",
+        "level": "B2.2"
+      }
+    ],"educationPeriods":["Setembre 2023 — Juny 2025","Setembre 2020 — Juny 2023"],"skillGroups":[{"name":"HTML5","description":"Utilitzo HTML per estructurar continguts web amb semàntica correcta, una jerarquia clara de títols, formularis accessibles i una base sòlida per al disseny i el SEO."},{"name":"CSS3","description":"La capa visual dels meus projectes: maquetació amb Flexbox i Grid, adaptació a pantalles sense frameworks, animacions lleugeres i variables i temes coherents."},{"name":"JavaScript","description":"La llengua que faig servir cada dia al navegador i al servidor amb Node.js. Amb ella creo la lògica de les interfícies, consumeixo APIs i resolc problemes reals."},{"name":"TypeScript","description":"JavaScript amb tipus estàtics que m’ajuda a detectar errors abans, documentar les dades i refactoritzar projectes professionals amb confiança."},{"name":"React","description":"La meva biblioteca principal per crear interfícies amb components reutilitzables, hooks i gestió d’estat. L’he fet servir en eines de gestió i webs completes per a clients."},{"name":"Next.js","description":"El framework de React que trio quan són importants el posicionament i el rendiment: renderització híbrida, rutes localitzades, metadades i desplegament a Cloudflare amb OpenNext."},{"name":"Angular","description":"Un framework complet per a aplicacions SPA grans, amb injecció de dependències, rutes i una arquitectura que facilita el treball en equip."},{"name":"A11y (WCAG)","description":"Aplico criteris d’accessibilitat web: HTML semàntic, navegació completa amb teclat, focus visible, contrast suficient i compatibilitat amb lectors de pantalla."},{"name":"Tailwind CSS","description":"El meu framework d’estils habitual: utilitats que acceleren el desenvolupament i mantenen la coherència, amb temes personalitzats, mode fosc i disseny adaptable."},{"name":"Framer Motion","description":"Biblioteca d’animació per a React que faig servir en transicions entre vistes, aparicions en fer scroll, gestos i microinteraccions."},{"name":"React Query","description":"Gestió de l’estat del servidor amb memòria cau automàtica, actualització en segon pla i sincronització de dades per a aplicacions amb APIs."},{"name":"Zustand","description":"Una store global lleugera per a l’estat del client, útil quan molts components comparteixen dades sense codi accessori innecessari."},{"name":"React Hook Form","description":"La meva opció habitual per als formularis: ràpida, amb validació integrada i una combinació excel·lent amb Zod en formularis complexos."},{"name":"Zod","description":"Validació d’esquemes TypeScript compartida entre client i servidor per mantenir coherents els formularis i les dades de l’API."},{"name":"Node.js","description":"El runtime que faig servir per a APIs REST, scripts d’inicialització, automatitzacions i eines, compartint JavaScript a tota la pila."},{"name":"Express","description":"Framework de servidor per a Node.js que faig servir per crear APIs REST, organitzar rutes i afegir middleware d’autenticació i validació."},{"name":"Nodemailer","description":"Enviament de correus des del backend per a notificacions i confirmacions, amb plantilles, cues i registres de lliurament."},{"name":"JWT","description":"Autenticació sense estat mitjançant tokens signats. Juntament amb bcryptjs, permet sessions segures amb rols i permisos."},{"name":"Vite","description":"La meva eina de desenvolupament i build frontend: servidor ràpid, actualització immediata i builds de producció optimitzats."},{"name":"Vitest","description":"Proves unitàries ràpides per a la lògica de negoci, utilitats i components importants, integrades amb el flux de Vite."},{"name":"Playwright","description":"Proves end-to-end que recorren fluxos d’usuari complets en diversos navegadors abans del desplegament."},{"name":"ESLint","description":"Anàlisi estàtica que detecta problemes aviat, unifica l’estil i manté els projectes nets i fàcils de mantenir."},{"name":"Git","description":"Control de versions amb branques per funcionalitat, commits clars i revisió de canvis en projectes individuals i col·laboratius."}]
+  }
+}

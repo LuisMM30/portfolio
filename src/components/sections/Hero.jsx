@@ -4,13 +4,8 @@ import { ArrowRight } from 'lucide-react'
 import { site } from '../../data/site'
 import HeroInfoVariants from '../ui/HeroInfoVariants'
 import { useEnvironment } from '../../hooks/useEnvironment'
-
-const specRows = [
-  { label: 'Rol', value: 'Desarrollador Web Full Stack\nJunior' },
-  { label: 'Base', value: site.location },
-  { label: 'Formación', value: 'Téc. Sup. Desarrollo de Aplicaciones Web' },
-  { label: 'Estado', value: 'Disponible para nuevas oportunidades', live: true }
-]
+import { useI18n } from '../../i18n/LocaleProvider'
+import { localizePath } from '../../i18n'
 
 const nameLines = [
   { text: 'LUIS', scroll: 0.18 },
@@ -20,6 +15,14 @@ const nameLines = [
 
 export default function Hero() {
   const { motionEnabled } = useEnvironment()
+  const { locale, t } = useI18n()
+  const route = (path) => localizePath(path, locale)
+  const specRows = [
+    { label: t('ui.role'), value: t('hero.role').replace(' Junior', '\\nJunior') },
+    { label: t('hero.base'), value: site.location },
+    { label: t('ui.training'), value: t('hero.education') },
+    { label: t('common.status'), value: t('hero.available'), live: true },
+  ]
   const layersRef = useRef([])
 
   // Scroll-driven parallax: each name layer + marquee drifts at its own speed.
@@ -66,15 +69,15 @@ export default function Hero() {
         <div className="flex items-center justify-between gap-6 border-b border-border py-3">
           <p className="u-label flex items-center gap-3 text-text-muted">
             <span className="inline-block h-1.5 w-1.5 bg-accent" aria-hidden="true" />
-            Portfolio — {site.role}
+            {t('hero.portfolioRole', { role: t('hero.role') })}
           </p>
-          <p className="u-label hidden text-text-muted md:block">Disponible para proyectos</p>
+          <p className="u-label hidden text-text-muted md:block">{t('hero.availableProjects')}</p>
         </div>
 
         {/* Monumental name */}
         <div className="hero-content flex flex-1 flex-col justify-center py-8 md:py-10">
           <h1 className="sr-only">
-            {site.name} — {site.role} en {site.location}
+            {site.name} — {t('hero.role')} en {site.location}
           </h1>
           <div className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-16">
             <div aria-hidden="true" className="select-none lg:col-span-7">
@@ -104,15 +107,15 @@ export default function Hero() {
           {/* Value line and actions */}
           <div className="mt-10">
             <p className="max-w-4xl text-lg leading-relaxed text-text-secondary md:text-xl">
-              {site.headline} {site.subheadline}
+              {t('hero.headline')} {site.subheadline}
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <Link
-                to="/#experiencia"
+                to={`${route('/')}#experiencia`}
                 className="inline-flex min-h-[44px] items-center justify-center gap-2 whitespace-nowrap bg-accent px-7 py-3.5 text-base font-medium text-accent-ink transition-all duration-300 hover:-translate-y-0.5 hover:bg-accent-hover"
                 data-cursor="view"
               >
-                Sobre mí
+                {t('hero.aboutCta')}
                 <ArrowRight size={18} aria-hidden="true" />
               </Link>
             </div>

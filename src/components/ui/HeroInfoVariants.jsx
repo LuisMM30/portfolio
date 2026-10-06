@@ -1,8 +1,10 @@
 import { Terminal as TerminalIcon } from 'lucide-react'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 export default function HeroInfoVariants({ rows }) {
+  const { t } = useI18n()
   return (
-    <div className="hero-variants" role="group" aria-label="Información profesional">
+    <div className="hero-variants" role="group" aria-label={t('hero.profileGroup')}>
       <div className="hero-variant-terminal terminal-box w-full border border-border bg-bg-primary p-3 font-mono text-[0.98rem] leading-tight">
         <div className="terminal-bar mb-2 flex items-center justify-between border-b border-border pb-2 text-text-muted">
           <span className="flex items-center gap-2">
@@ -31,7 +33,7 @@ export default function HeroInfoVariants({ rows }) {
             <source media="(min-width: 640px)" srcSet="/images/luis-portrait-desktop.jpg" />
             <img
               src="/images/luis-portrait.jpg"
-              alt="Foto de Luis Montes de Oca"
+              alt={t('common.photoAlt')}
               loading="lazy"
               className="mx-auto block aspect-[3/4] h-72 w-auto max-w-full rounded-sm border border-border object-contain object-center sm:mx-0 sm:aspect-auto sm:h-[102px] sm:w-20 md:h-[122px] md:w-24 lg:h-[184px] lg:w-36"
             />

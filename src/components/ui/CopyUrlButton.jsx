@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { Check, Copy } from 'lucide-react'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 export default function CopyUrlButton({ url, className }) {
   const [copied, setCopied] = useState(false)
+  const { t } = useI18n()
 
   const handleCopy = async () => {
     try {
@@ -26,8 +28,8 @@ export default function CopyUrlButton({ url, className }) {
     <button
       type="button"
       onClick={handleCopy}
-      title={copied ? '¡Copiado!' : 'Copiar URL'}
-      aria-label={copied ? 'URL copiada' : 'Copiar URL'}
+      title={copied ? t('common.copied') : t('common.copyUrl')}
+      aria-label={copied ? t('common.urlCopied') : t('common.copyUrl')}
       className={className}
     >
       {copied ? <Check size={14} aria-hidden="true" /> : <Copy size={14} aria-hidden="true" />}

@@ -1,10 +1,13 @@
+import { useI18n } from '../../i18n/LocaleProvider'
+
 export default function ContactSkeleton() {
+  const { t } = useI18n()
   return (
     <section
       id="contacto"
       className="relative pb-24 pt-24 md:pb-32 md:pt-36"
       aria-busy="true"
-      aria-label="Cargando sección de contacto"
+      aria-label={t('common.loadingContact')}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <div className="border-t border-border pt-6 md:pt-20">

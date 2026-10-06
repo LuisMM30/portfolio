@@ -1,12 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { experiences } from '../../data/experience'
 import SectionHeading from '../ui/SectionHeading'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 function startYear(period) {
   return period.match(/\d{4}/)?.[0] ?? ''
 }
 
 export default function Experience() {
+  const { t, locale } = useI18n()
   const listRef = useRef(null)
   const lockActiveRef = useRef(false)
   const [activeIndex, setActiveIndex] = useState(0)
@@ -50,6 +52,20 @@ export default function Experience() {
   }, [])
 
   const displayIndex = hoveredIndex ?? activeIndex
+  const experienceText = (item, index) => {
+    const translated = t(`data.experience.${index}`)
+    const months = item.period.match(/[A-Za-zÁÉÍÓÚÜáéíóúü]+/g) ?? []
+    const years = item.period.match(/\d{4}/g) ?? []
+    const monthKeys = { Junio: 'june', Julio: 'july', Marzo: 'march', Octubre: 'october', Febrero: 'february', Septiembre: 'september' }
+    const englishPeriods = ['June 2026 — July 2026', 'March 2026 — June 2026', 'October 2025 — February 2026', 'September 2024 — June 2025']
+    const translatedMonths = months.map((month) => t(`copy.experience.${monthKeys[month]}`))
+    const period = locale === 'es'
+      ? item.period
+      : locale === 'en'
+        ? englishPeriods[index]
+        : `${translatedMonths[0] ?? months[0]} ${years[0] ?? ''} — ${translatedMonths[1] ?? months[1]} ${years[1] ?? ''}`.trim()
+    return { ...item, ...translated, period }
+  }
   const year = startYear(experiences[displayIndex]?.period)
 
   const goToEntry = (index) => {
@@ -73,7 +89,7 @@ export default function Experience() {
       <div className="mx-auto max-w-7xl px-5 sm:px-6 lg:px-8">
         <SectionHeading
           index="02"
-          title="Experiencia"
+          title={t('sections.experience')}
           id="experiencia"
         />
 
@@ -128,7 +144,9 @@ export default function Experience() {
           </div>
 
           <ol ref={listRef} className="lg:col-span-8">
-            {experiences.map((item, i) => (
+            {experiences.map((sourceItem, i) => {
+              const item = experienceText(sourceItem, i)
+              return (
               <li
                 key={item.org + item.period}
                 id={`experiencia-${i + 1}`}
@@ -160,7 +178,7 @@ export default function Experience() {
                   ))}
                 </p>
               </li>
-            ))}
+            )})}
           </ol>
         </div>
       </div>

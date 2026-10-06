@@ -1,9 +1,11 @@
 import { Moon, Sun } from 'lucide-react'
 import { useTheme } from '../../hooks/useTheme'
 import { cn } from '../../utils/cn'
+import { useI18n } from '../../i18n/LocaleProvider'
 
 export default function ThemeToggle({ className }) {
   const { theme, toggleTheme } = useTheme()
+  const { t } = useI18n()
   const isDark = theme === 'dark'
 
   return (
@@ -11,11 +13,11 @@ export default function ThemeToggle({ className }) {
       type="button"
       onClick={toggleTheme}
       className={cn(
-        'relative inline-flex items-center justify-center h-[46px] w-[46px] border border-border text-text-secondary hover:text-text-primary hover:border-border-strong transition-all duration-200 cursor-pointer',
+        'relative inline-flex h-11 w-11 shrink-0 items-center justify-center border border-border text-text-secondary transition-all duration-200 hover:border-border-strong hover:text-text-primary sm:h-[46px] sm:w-[46px]',
         className,
       )}
-      aria-label={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
-      title={isDark ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'}
+      aria-label={isDark ? t('ui.themeLight') : t('ui.themeDark')}
+      title={isDark ? t('ui.themeLight') : t('ui.themeDark')}
     >
       <Sun
         size={17}

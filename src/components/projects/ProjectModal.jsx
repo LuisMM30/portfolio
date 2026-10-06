@@ -3,6 +3,8 @@ import { X, ExternalLink, Monitor } from 'lucide-react'
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
 import { cn } from '../../utils/cn'
+import { useI18n } from '../../i18n/LocaleProvider'
+import { localizeProject } from '../../i18n/projectTranslations'
 
 function Section({ label, children }) {
   return (
@@ -14,6 +16,7 @@ function Section({ label, children }) {
 }
 
 export default function ProjectModal({ project, isOpen, onClose }) {
+  const { t, locale } = useI18n()
   const closeButtonRef = useRef(null)
   const panelRef = useRef(null)
   const contentRef = useRef(null)
@@ -37,7 +40,8 @@ export default function ProjectModal({ project, isOpen, onClose }) {
     }
   }, [open, onClose, project?.slug])
 
-  const { details } = project ?? {}
+  const localizedProject = project ? localizeProject(project, locale) : null
+  const { details } = localizedProject ?? {}
 
   return (
     <div
@@ -84,14 +88,14 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                     {project.desktopOnly && (
                       <p className="mt-1.5 flex items-center gap-1.5 text-xs text-text-muted">
                         <Monitor size={13} aria-hidden="true" className="shrink-0" />
-                        Solo ordenadores · no responsive
+                        {t('projectModal.privateDesktop')}
                       </p>
                     )}
                     <h2
                       id="modal-title"
                       className="truncate text-lg font-semibold tracking-tight text-text-primary md:text-2xl"
                     >
-                      {project.title}
+                      {localizedProject.title}
                     </h2>
                   </div>
                 </div>
@@ -100,14 +104,14 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                   type="button"
                   onClick={onClose}
                   className="flex min-h-[44px] min-w-[44px] shrink-0 items-center justify-center border border-border p-2.5 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary"
-                  aria-label="Cerrar"
+                  aria-label={t('common.close')}
                 >
                   <X size={18} />
                 </button>
               </div>
 
               <div className="px-5 py-2 md:px-8">
-                <Section label="Contexto">
+                <Section label={t('projectModal.context')}>
                   {(Array.isArray(details.context) ? details.context : [details.context]).map(
                     (paragraph) => (
                       <p
@@ -120,7 +124,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                   )}
                 </Section>
 
-                <Section label="El proyecto">
+                <Section label={t('projectModal.project')}>
                   {(Array.isArray(details.project) ? details.project : [details.project]).map(
                     (paragraph) => (
                       <p
@@ -134,7 +138,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 </Section>
 
                 {details.subProjects && (
-                  <Section label="Proyectos">
+                  <Section label={t('projectModal.projects')}>
                     <div className="grid gap-6 sm:grid-cols-2">
                       {details.subProjects.map((sub) => (
                         <article key={sub.name}>
@@ -166,7 +170,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 )}
 
                 {details.features && (
-                  <Section label="Funcionalidades">
+                  <Section label={t('projectModal.features')}>
                     <ul>
                       {details.features.map((feature, i) => (
                         <li
@@ -183,7 +187,7 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                   </Section>
                 )}
 
-                <Section label="Tecnologías">
+                <Section label={t('projectModal.technologies')}>
                   <p className="flex flex-wrap gap-x-2.5 gap-y-1 font-mono text-sm text-text-primary">
                     {details.technologies.map((tech, i) => (
                       <span key={tech} className="inline-flex items-baseline gap-2.5">
@@ -195,21 +199,21 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 </Section>
 
                 {details.goal && (
-                  <Section label="Objetivo principal">
+                  <Section label={t('projectModal.goal')}>
                     <p className="leading-relaxed text-text-secondary">{details.goal}</p>
                   </Section>
                 )}
 
                 <div className="flex flex-col gap-4 pb-8 pt-8 sm:flex-row sm:items-center sm:justify-between">
                   <div className="flex items-center gap-3">
-                    <span className="u-label text-text-muted">Estado</span>
+                    <span className="u-label text-text-muted">{t('common.status')}</span>
                     <Badge variant={project.status === 'online' ? 'online' : 'private'}>
                       {details.status}
                     </Badge>
                   </div>
                   {project.url && (
                     <Button href={project.url} external variant="primary">
-                      Visitar web
+                      {t('common.visitWebsite')}
                       <ExternalLink size={16} aria-hidden="true" />
                     </Button>
                   )}
