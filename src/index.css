@@ -101,7 +101,7 @@ html[data-theme='light'] {
   .display { font-weight: 700; letter-spacing: -.045em; line-height: .94; }
   .link-underline { position: relative; text-decoration: none; }
   .link-underline::after { content: ''; position: absolute; left: 0; right: 0; bottom: -4px; height: 1px; background: currentColor; transform: scaleX(0); transform-origin: right; transition: transform .35s cubic-bezier(.22,1,.36,1); }
-  .link-underline:hover::after, .link-underline:focus-visible::after { transform: scaleX(1); transform-origin: left; }
+  .link-underline:hover::after, .link-underline:focus-visible::after, .link-underline--active::after { transform: scaleX(1); transform-origin: left; }
   .stroke-text { color: transparent; -webkit-text-stroke: 1px var(--stroke-text); }
   .hero-marquee .marquee-track { display: inline-flex; width: max-content; animation: marquee-scroll 30s linear infinite; }
   @keyframes marquee-scroll { to { transform: translateX(-50%); } }

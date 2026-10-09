@@ -57,9 +57,9 @@ export default function Footer() {
               <li>
                 <Link
                   to={projectsLink.to}
-                  className="link-underline inline-flex items-center gap-2 text-text-secondary transition-colors hover:text-accent"
+                  className="inline-flex items-center gap-2 text-accent"
                 >
-                  {projectsLink.label}
+                  <span className="link-underline link-underline--active">{projectsLink.label}</span>
                   <ArrowUpRight size={13} aria-hidden="true" />
                 </Link>
               </li>
