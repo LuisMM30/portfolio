@@ -62,11 +62,17 @@ export const projects = [
       context:
         'Proyecto web y de gestión de pedidos orientado a negocio B2B para Awakelab, con foco en flujo de servicios, validación de solicitudes, roles de usuario, automatización de procesos y seguimiento operativo. La solución combina una interfaz moderna para clientes y paneles de administración para equipos internos, con arquitecturas y validaciones pensadas para un entorno profesional y corporativo.',
       project: [
+        'Awakelab Pedidos digitaliza la gestión de solicitudes de servicios formativos y tecnológicos. Clientes y equipos internos trabajan desde un único portal: creación de pedidos, documentación, carrito y envío a validación, seguimiento del estado y organización del trabajo por roles, equipos y flujos.',
         'Aplicación web de gestión de pedidos y servicios para Awakelab, con una experiencia moderna para clientes y un backend robusto para la administración interna. La plataforma permite registrar usuarios, crear pedidos según distintos tipos de servicio, consultar disponibilidad de formación y dar seguimiento al estado de cada solicitud.',
         'El proyecto incluye autenticación, gestión de roles, administración de empresas y departamentos, workflows de negocio, integración con catálogos de cursos, validación de datos y procesos de aprobación. Está pensado como una solución operativa y escalable para gestionar pedidos complejos en un entorno corporativo.',
       ],
       features: [
-        'Registro e inicio de sesión con distintos perfiles de usuario',
+        'Registro e inicio de sesión con distintos perfiles de usuario: cliente, comercial, contenidos, QA, soporte, administración, finanzas, PM y administración del sistema',
+        'Solicitudes para 12 servicios: consulta de disponibilidad de cursos, conectores y aulas virtuales, contenidos SCORM a medida, manuales PDF, impartición de formación, hosting, digitalización, migraciones y testeo, licencias de software, licitaciones, desarrollos a medida y contacto con soporte',
+        'Carrito para agrupar pedidos, guardar borradores y enviar a validación',
+        'Seguimiento de pedidos con filtros por servicio y estado, detalle e historial de cambios',
+        'Notificaciones de cambios de estado',
+        'Catálogo interno de cursos con búsqueda, importación y exportación',
         'Gestión de empresas, departamentos, clientes y roles',
         'Creación de pedidos por tipo de servicio',
         'Consulta de disponibilidad de contenidos y formación',
@@ -153,6 +159,13 @@ export const projects = [
         'Animaciones suaves con Framer Motion e iconografía con Lucide React',
         'Optimización de rendimiento, imágenes y contenido para una experiencia rápida y eficiente',
         'Build y despliegue preparados para Cloudflare con OpenNext',
+        'Catálogo de servicios: desarrollo de ideas y software a medida, consultoría tecnológica, aplicaciones web y móviles, monetización, asesoría comercial, servicios cloud, mantenimiento y formación',
+        'Proceso de trabajo con las etapas de un proyecto',
+        'Cuatro casos de estudio con retos, soluciones y resultados',
+        'Blog multilingüe con seis artículos por idioma, gestionado mediante archivos del proyecto (sin CMS)',
+        'Formulario de contacto con validación, aceptación de privacidad y protección Turnstile',
+        'Envío de correo preparado con Resend (requiere configurar credenciales y direcciones)',
+        'Páginas de aviso legal, privacidad y cookies, además de la página sobre la empresa',
       ],
       technologies: [
         'Next.js 16 / React 19 / TypeScript',
@@ -197,8 +210,10 @@ export const projects = [
     details: {
       context:
         'Web de restaurante real muy completa, orientada a marca, reservas, SEO y multidioma. La página principal combina hero, secciones de valores, testimonios, estadísticas, equipo, galería previa, CTA de reservas y newsletter, y se completa con una carta con navegación por categorías, galería de platos y ambiente, sección sobre el restaurante con historia y propuesta de marca, y páginas legales (aviso legal, privacidad, cookies, FAQ y alérgenos).',
-      project:
+      project: [
+        'O’Encontro Restaurante Bar es una web corporativa completa, multilingüe y adaptada a móviles, pensada para mostrar la identidad de un restaurante gallego en Madrid y facilitar que sus clientes consulten la carta, conozcan el local y contacten para reservar o preguntar por eventos. Los clientes pueden iniciar consultas, reservas, eventos o catering desde formularios validados que preparan el mensaje para WhatsApp. Funciona en español, gallego, inglés y portugués.',
         'Web moderna de restaurante con marca premium (identidad "Sargadelos" en azul cobalto), multidioma, reservas, contacto por WhatsApp, SEO avanzado, contenido editorial, dark mode y diseño responsive. Los formularios validan en cliente y generan URLs de WhatsApp preformateadas; los CTAs de reserva se integran con subdominios externos de booking y eventos. Incluye metadata por página con hreflang y schema markup, testing con Vitest y Playwright, y despliegue en Cloudflare mediante OpenNext.',
+      ],
       features: [
         'Página principal con hero, secciones de valores, testimonios, estadísticas, equipo, galería previa, CTA de reservas y newsletter',
         'Carta de restaurante con estructura y navegación por categorías',
@@ -206,6 +221,13 @@ export const projects = [
         'Sección sobre el restaurante con historia y propuesta de marca',
         'Página de contacto con formularios de consulta y reserva',
         'Enlaces a WhatsApp para contacto directo y reservas',
+        'Carta interactiva con búsqueda de platos, descripciones y precios; acceso a imágenes desde algunos platos',
+        'Información sobre alérgenos',
+        'Consultas de contacto, reservas, eventos y catering con formularios validados',
+        'Modo claro y oscuro, navegación móvil y optimización de imágenes',
+        'Acciones para encontrar el restaurante y contactar directamente',
+        'Nota: las reservas se derivan a enlaces externos; no incluye sistema propio de disponibilidad, cobro ni gestión de reservas',
+        'Nota: no incluye panel de administración; los contenidos se gestionan en el proyecto',
         'Páginas legales: aviso legal, privacidad, cookies, FAQ y alérgenos',
         'Multidioma (español, gallego, inglés y portugués) con next-intl: rutas localizadas, textos centralizados en i18n y alternates/hreflang con rutas canonizadas',
         'Formularios con react-hook-form + zod: validación del lado cliente y creación de URLs de WhatsApp con texto preformateado según el tipo de consulta o reserva',
