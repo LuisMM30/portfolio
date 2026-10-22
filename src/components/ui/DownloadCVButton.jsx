@@ -11,12 +11,13 @@ export default function DownloadCVButton({
   iconOnly = false,
   ...props
 }) {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
+  const file = cv.byLocale[locale] ?? cv.byLocale.es
   const translatedLabel = label === 'Descargar CV' ? t('common.downloadCv') : label
   return (
     <Button
-      href={cv.url}
-      download={cv.fileName}
+      href={file.url}
+      download={file.fileName}
       variant={variant}
       size={size}
       className={className}

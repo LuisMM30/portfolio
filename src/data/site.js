@@ -16,6 +16,15 @@ export const site = {
 export const cv = {
   fileName: 'DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf',
   url: '/cv/DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf',
+  byLocale: {
+    es: { fileName: 'DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf' },
+    en: { fileName: 'WEB-DEVELOPER-LUIS-MONTES-DE-OCA.pdf', url: '/cv/WEB-DEVELOPER-LUIS-MONTES-DE-OCA.pdf' },
+    de: { fileName: 'WEBENTWICKLER-LUIS-MONTES-DE-OCA.pdf', url: '/cv/WEBENTWICKLER-LUIS-MONTES-DE-OCA.pdf' },
+    gl: { fileName: 'DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA.pdf' },
+    pt: { fileName: 'DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA-PT.pdf' },
+    ca: { fileName: 'DESENVOLUPADOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESENVOLUPADOR-WEB-LUIS-MONTES-DE-OCA.pdf' },
+    fr: { fileName: 'DEVELOPPEUR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DEVELOPPEUR-WEB-LUIS-MONTES-DE-OCA.pdf' },
+  },
 }
 
 export const navLinks = [

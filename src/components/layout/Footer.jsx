@@ -8,6 +8,7 @@ export default function Footer() {
   const year = new Date().getFullYear()
   const location = useLocation()
   const { locale, t } = useI18n()
+  const file = cv.byLocale[locale] ?? cv.byLocale.es
   const route = (path) => localizePath(path, locale)
   const onProjectsPage = location.pathname.endsWith('/proyectos')
 
@@ -71,8 +72,8 @@ export default function Footer() {
             <ul className="space-y-2.5 text-sm">
               <li className="flex justify-start">
                 <a
-                  href={cv.url}
-                  download={cv.fileName}
+                  href={file.url}
+                  download={file.fileName}
                   className="link-underline inline-flex items-center gap-2 text-text-secondary transition-colors hover:text-accent"
                 >
                   <Download size={14} aria-hidden="true" />
