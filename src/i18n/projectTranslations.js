@@ -88,6 +88,21 @@ const details = {
   },
 }
 
+const authorshipLabels = {
+  es: { solo: '100% obra propia', team: 'Realizado con mi equipo' },
+  en: { solo: '100% my own work', team: 'Built with my team' },
+  de: { solo: '100 % eigene Arbeit', team: 'Mit meinem Team umgesetzt' },
+  gl: { solo: '100% obra propia', team: 'Realizado co meu equipo' },
+  pt: { solo: '100% trabalho próprio', team: 'Realizado com a minha equipa' },
+  ca: { solo: '100% obra pròpia', team: 'Realitzat amb el meu equip' },
+  fr: { solo: '100 % travail personnel', team: 'Réalisé avec mon équipe' },
+}
+
+export function getAuthorshipLabel(project, locale) {
+  const kind = project.authorship === 'team' ? 'team' : 'solo'
+  return (authorshipLabels[locale] ?? authorshipLabels.es)[kind]
+}
+
 export function localizeProject(project, locale) {
   const values = copy[locale]?.[project.slug] ?? copy.es[project.slug]
   if (!values) return project

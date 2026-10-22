@@ -4,7 +4,7 @@ import Badge from '../ui/Badge'
 import Button from '../ui/Button'
 import { cn } from '../../utils/cn'
 import { useI18n } from '../../i18n/LocaleProvider'
-import { localizeProject } from '../../i18n/projectTranslations'
+import { localizeProject, getAuthorshipLabel } from '../../i18n/projectTranslations'
 
 function Section({ label, children }) {
   return (
@@ -85,6 +85,9 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                     >
                       {details.status}
                     </Badge>
+                    <p className="mt-1.5 border-l-2 border-accent pl-2 font-mono text-xs text-text-secondary">
+                      {getAuthorshipLabel(project, locale)}
+                    </p>
                     {project.desktopOnly && (
                       <p className="mt-1.5 flex items-center gap-1.5 text-xs text-text-muted">
                         <Monitor size={13} aria-hidden="true" className="shrink-0" />

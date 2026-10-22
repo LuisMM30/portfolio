@@ -6,6 +6,7 @@ import BrowserMockup from '../ui/BrowserMockup'
 import CopyUrlButton from '../ui/CopyUrlButton'
 import { cn } from '../../utils/cn'
 import { useI18n } from '../../i18n/LocaleProvider'
+import { getAuthorshipLabel } from '../../i18n/projectTranslations'
 
 function ProjectFigure({ project, variant = 'desktop' }) {
   const { t } = useI18n()
@@ -65,7 +66,7 @@ function ProjectFigure({ project, variant = 'desktop' }) {
 }
 
 export default function ProjectShowcase({ project, index, onOpenModal }) {
-  const { t } = useI18n()
+  const { t, locale } = useI18n()
   const reversed = index % 2 !== 0
   const badgeVariant = project.status === 'online' ? 'online' : 'private'
   const rowRef = useRef(null)
@@ -81,6 +82,9 @@ export default function ProjectShowcase({ project, index, onOpenModal }) {
         <div className="flex min-w-0 items-baseline gap-4">
           <span className="font-mono text-sm text-accent">{project.id}</span>
           <span className="u-label truncate text-text-muted">{project.category}</span>
+          <span className="shrink-0 border-l-2 border-accent pl-2 font-mono text-xs text-text-secondary">
+            {getAuthorshipLabel(project, locale)}
+          </span>
         </div>
         <Badge variant={badgeVariant}>{project.statusLabel}</Badge>
       </header>

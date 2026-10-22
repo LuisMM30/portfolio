@@ -2,6 +2,7 @@ export const projects = [
   {
     id: '01',
     slug: 'ferreteria-delicias',
+    authorship: 'team',
     title: 'Ferretería Delicias',
     category: 'E-commerce',
     description:
@@ -22,6 +23,7 @@ export const projects = [
   {
     id: '02',
     slug: 'la-luna-de-hugo',
+    authorship: 'solo',
     title: 'La Luna de Hugo',
     category: 'E-commerce',
     description:
@@ -42,6 +44,7 @@ export const projects = [
   {
     id: '03',
     slug: 'gestion-pedidos',
+    authorship: 'solo',
     title: 'Sistema de gestión de pedidos',
     category: 'Aplicación web',
     desktopOnly: true,
@@ -117,6 +120,7 @@ export const projects = [
   {
     id: '04',
     slug: 'softgenio',
+    authorship: 'solo',
     title: 'Web corporativa SoftGenio',
     category: 'Web corporativa',
     description:
@@ -192,6 +196,7 @@ export const projects = [
   {
     id: '05',
     slug: 'restaurante-gallego',
+    authorship: 'solo',
     title: 'Restaurante Gallego',
     category: 'Web para negocio',
     description:
