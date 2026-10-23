@@ -1,6 +1,6 @@
 export const site = {
   name: 'Luis Montes de Oca',
-  role: 'Desarrollador Web Full Stack Junior',
+  role: 'Desarrollador de aplicaciones web Junior',
   location: 'Madrid',
   status: 'Disponible para nuevas oportunidades',
   email: 'luismonteswebs@gmail.com',
@@ -13,17 +13,19 @@ export const site = {
   highlights: ['Proyectos reales', 'Frontend moderno', 'IA y automatización'],
 }
 
+const cvFile = { fileName: 'DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf' }
+
 export const cv = {
-  fileName: 'DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf',
-  url: '/cv/DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf',
+  fileName: cvFile.fileName,
+  url: cvFile.url,
   byLocale: {
-    es: { fileName: 'DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf' },
-    en: { fileName: 'WEB-DEVELOPER-LUIS-MONTES-DE-OCA.pdf', url: '/cv/WEB-DEVELOPER-LUIS-MONTES-DE-OCA.pdf' },
-    de: { fileName: 'WEBENTWICKLER-LUIS-MONTES-DE-OCA.pdf', url: '/cv/WEBENTWICKLER-LUIS-MONTES-DE-OCA.pdf' },
-    gl: { fileName: 'DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA.pdf' },
-    pt: { fileName: 'DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA-PT.pdf' },
-    ca: { fileName: 'DESENVOLUPADOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESENVOLUPADOR-WEB-LUIS-MONTES-DE-OCA.pdf' },
-    fr: { fileName: 'DEVELOPPEUR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DEVELOPPEUR-WEB-LUIS-MONTES-DE-OCA.pdf' },
+    es: cvFile,
+    en: cvFile,
+    de: cvFile,
+    gl: cvFile,
+    pt: cvFile,
+    ca: cvFile,
+    fr: cvFile,
   },
 }
 
