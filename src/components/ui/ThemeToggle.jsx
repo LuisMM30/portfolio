@@ -20,7 +20,7 @@ export default function ThemeToggle({ className }) {
       className={cn(
         'relative inline-flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden border border-border transition-[background-color,border-color] hover:border-border-strong sm:h-[46px] sm:w-[46px] motion-reduce:transition-none',
         EASE,
-        isDark ? 'bg-zinc-700 text-zinc-100' : 'bg-sky-200 text-sky-950',
+        'bg-transparent text-text-secondary hover:text-text-primary',
         className,
       )}
       aria-label={label}

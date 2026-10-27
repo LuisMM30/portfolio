@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ArrowUpRight, X } from 'lucide-react'
+import { ArrowUpRight, Folder, X } from 'lucide-react'
 import { site } from '../../data/site'
 import { useI18n } from '../../i18n/LocaleProvider'
 import { localizePath } from '../../i18n'
@@ -154,13 +154,14 @@ export default function Navbar() {
             {site.name}
           </Link>
 
-          {/* El acceso contextual se reserva a escritorio para que los controles
-              esenciales conserven espacio y alcance cómodo en móviles estrechos. */}
           <Link
             to={centralButton.href}
-            className="u-label hidden h-[46px] items-center border border-border px-4 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary md:inline-flex"
+            aria-label={centralButton.label}
+            title={centralButton.label}
+            className="u-label inline-flex h-11 min-w-11 shrink-0 items-center justify-center whitespace-nowrap border border-border px-2.5 text-text-secondary transition-colors hover:border-border-strong hover:text-text-primary sm:h-[46px] sm:min-w-0 sm:px-4"
           >
-            {centralButton.label}
+            <Folder size={18} aria-hidden="true" className="sm:hidden" />
+            <span className="hidden sm:inline">{centralButton.label}</span>
           </Link>
 
           <div className="flex items-center gap-1 min-[380px]:gap-2.5">
