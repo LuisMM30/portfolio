@@ -13,19 +13,19 @@ export const site = {
   highlights: ['Proyectos reales', 'Frontend moderno', 'IA y automatización'],
 }
 
-const cvFile = { fileName: 'DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf', url: '/cv/DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf' }
+const cvFile = (fileName) => ({ fileName, url: `/cv/${fileName}` })
 
 export const cv = {
-  fileName: cvFile.fileName,
-  url: cvFile.url,
+  fileName: 'DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf',
+  url: '/cv/DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf',
   byLocale: {
-    es: cvFile,
-    en: cvFile,
-    de: cvFile,
-    gl: cvFile,
-    pt: cvFile,
-    ca: cvFile,
-    fr: cvFile,
+    es: cvFile('DESARROLLADOR-WEB-LUIS-MONTES-DE-OCA.pdf'),
+    en: cvFile('WEB-DEVELOPER-LUIS-MONTES-DE-OCA.pdf'),
+    de: cvFile('WEBENTWICKLER-LUIS-MONTES-DE-OCA.pdf'),
+    gl: cvFile('DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA.pdf'),
+    pt: cvFile('DESENVOLVEDOR-WEB-LUIS-MONTES-DE-OCA-PT.pdf'),
+    ca: cvFile('DESENVOLUPADOR-WEB-LUIS-MONTES-DE-OCA.pdf'),
+    fr: cvFile('DEVELOPPEUR-WEB-LUIS-MONTES-DE-OCA.pdf'),
   },
 }
 
