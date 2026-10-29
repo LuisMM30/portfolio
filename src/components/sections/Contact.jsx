@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ArrowUpRight, Send, CheckCircle, AlertCircle } from 'lucide-react'
+import { ArrowUpRight, Send, CheckCircle, Mail } from 'lucide-react'
 import { site } from '../../data/site'
 import SectionHeading from '../ui/SectionHeading'
 import Button from '../ui/Button'
@@ -16,10 +16,10 @@ export default function Contact() {
     email: '',
     reason: '',
   })
-  const [status, setStatus] = useState('idle') // idle | success | error
+  const [status, setStatus] = useState('idle') // idle | sent | mailto
   const [errors, setErrors] = useState({})
 
-  const hasEndpoint = Boolean(import.meta.env.VITE_CONTACT_ENDPOINT)
+  const mailtoHref = `mailto:${site.email}`
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -50,15 +50,19 @@ export default function Contact() {
 
     const endpoint = import.meta.env.VITE_CONTACT_ENDPOINT
 
-    if (!endpoint) {
+    // Sin servicio configurado (o si falla) el mensaje nunca se pierde: se abre el
+    // cliente de correo del visitante con todos los datos ya redactados.
+    const openMailClient = () => {
       const subject = encodeURIComponent(t('form.subject', { name: payload.name }))
       const body = encodeURIComponent(
         t('form.body', { name: payload.name, email: payload.email, reason: payload.reason }),
       )
-      const mailtoUrl = `mailto:${site.email}?subject=${subject}&body=${body}`
-      setFormState({ name: '', email: '', reason: '' })
-      window.location.href = mailtoUrl
-      setStatus('success')
+      setStatus('mailto')
+      window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`
+    }
+
+    if (!endpoint) {
+      openMailClient()
       return
     }
 
@@ -69,19 +73,20 @@ export default function Contact() {
         body: JSON.stringify({
           ...payload,
           _subject: t('form.subject', { name: payload.name }),
-          _captcha: 'false',
         }),
       })
 
-      if (!response.ok) throw new Error(t('form.sendError'))
+      if (!response.ok) throw new Error('send failed')
 
       const result = await response.json().catch(() => null)
-      if (result && result.success === 'false') throw new Error(t('form.rejected'))
+      if (result && (result.success === false || result.success === 'false')) {
+        throw new Error('rejected')
+      }
 
-      setStatus('success')
+      setStatus('sent')
       setFormState({ name: '', email: '', reason: '' })
     } catch {
-      setStatus('error')
+      openMailClient()
     }
   }
 
@@ -211,21 +216,22 @@ export default function Contact() {
                 <div>
                   <label htmlFor="reason" className="u-label mb-1 block text-text-muted">
                     {t('sections.message')}
-                  </label>                    <input
-                      type="text"
-                      id="reason"
-                      name="reason"
-                      required
-                      value={formState.reason}
-                      onChange={handleChange}
-                      aria-invalid={Boolean(errors.reason)}
-                      className={fieldClasses}
-                      placeholder={t('sections.placeholderMessage')}
-                    />
-                    {errors.reason && (
-                      <p className="mt-1 text-sm text-danger">{errors.reason}</p>
-                    )}
-                  </div>
+                  </label>
+                  <textarea
+                    id="reason"
+                    name="reason"
+                    required
+                    rows={2}
+                    value={formState.reason}
+                    onChange={handleChange}
+                    aria-invalid={Boolean(errors.reason)}
+                    className={`${fieldClasses} resize-none`}
+                    placeholder={t('sections.placeholderMessage')}
+                  />
+                  {errors.reason && (
+                    <p className="mt-1 text-sm text-danger">{errors.reason}</p>
+                  )}
+                </div>
 
                 <div className="mt-auto flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-end">
                   <Button
@@ -240,21 +246,23 @@ export default function Contact() {
                   </Button>
 
                   <div aria-live="polite">
-                    {status === 'success' && (
+                    {status === 'sent' && (
                       <p className="flex items-start gap-2 text-sm text-online" role="status">
                         <CheckCircle size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
-                        <span>
-                          {hasEndpoint
-                            ? t('form.sent')
-                            : t('form.mailtoReady')}
-                        </span>
+                        <span>{t('form.sent')}</span>
                       </p>
                     )}
-                    {status === 'error' && (
-                      <p className="flex items-start gap-2 text-sm text-danger" role="alert">
-                        <AlertCircle size={16} className="mt-0.5 shrink-0" aria-hidden="true" />
+                    {status === 'mailto' && (
+                      <p className="flex items-start gap-2 text-sm text-text-secondary" role="status">
+                        <Mail size={16} className="mt-0.5 shrink-0 text-accent" aria-hidden="true" />
                         <span>
-                          {t('form.failed', { email: site.email })}
+                          {t('form.mailtoReady')}
+                          <a
+                            href={mailtoHref}
+                            className="mt-1 block break-all text-accent underline underline-offset-2 hover:text-text-primary"
+                          >
+                            {site.email}
+                          </a>
                         </span>
                       </p>
                     )}

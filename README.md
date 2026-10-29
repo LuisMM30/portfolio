@@ -36,7 +36,8 @@ mostrará un 404 en lugar de descargar.
 ## Formulario de contacto
 
 Sin configuración, el formulario abre el cliente de correo del visitante con
-el mensaje preparado (`mailto`). Para envíos reales sin backend, conecta un
+el asunto, el nombre, el email y el mensaje ya redactados (`mailto`), así que
+funciona sin backend ni servicios externos. Para envíos directos, conecta un
 servicio tipo Formspree/EmailJS:
 
 1. Crea una copia de `.env.example` como `.env`.
@@ -47,6 +48,10 @@ VITE_CONTACT_ENDPOINT=https://formspree.io/f/XXXXXXX
 ```
 
 3. Reinicia el servidor de desarrollo.
+
+Si ese servicio falla o rechaza el envío, el formulario vuelve automáticamente
+al cliente de correo del visitante, de modo que el mensaje nunca se queda sin
+salida.
 
 ## Personalización rápida
 
